@@ -1,0 +1,13 @@
+These files describe iterative improvements to the recon 2 
+reconstruction of human metabolism (doi:10.1038/nbt.2488)
+
+
+recon 2.1 [arXiv:1311.5696] is as described previously. 
+
+
+recon 2.1.1
+
+* removed abstract concept of limited carbon uptake
+* glucose (M_glc_D_b), the essential fatty acids (M_lnlc_b, M_lnlnca_b), amino acids (M_his_L_b, M_ile_L_b, M_leu_L_b, M_lys_L_b, M_met_L_b, M_phe_L_b, M_thr_L_b, M_trp_L_b, M_val_L_b) and vitamins (M_pnto_R_b, M_ribflv_b) have a limited supply rate of one unit
+* other metabolites in the minimal medium (M_nh4_b, M_o2_b, M_pi_b, M_so4_b, M_ca2_b, M_cl_b, M_fe2_b, M_k_b, M_na1_b, M_h_b, M_h2o_b) have unlimited supply
+* the resultant model has maximum growth rate 1.689
