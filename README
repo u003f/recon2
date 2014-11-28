@@ -1,4 +1,4 @@
-These files describe iterative improvements to the "recon 2" model of human metabolism (doi:10.1038/nbt.2488)
+These files describe iterative improvements to the "recon 2" model of human metabolism (doi:10.1038/nbt.2488, biomodels:MODEL1109130000)
 
 
 recon 2.1 (arXiv:1311.5696, biomodels:MODEL1311110000) is as described previously
@@ -12,3 +12,10 @@ recon 2.1.1
 * other metabolites in the minimal medium (M_nh4_b, M_o2_b, M_pi_b, M_so4_b, M_ca2_b, M_cl_b, M_fe2_b, M_k_b, M_na1_b, M_h_b, M_h2o_b) have unlimited supply
 * the resultant model has maximum growth rate 1.689
 * .. though growth is independent of glucose
+
+
+recon 2.1.2
+
+split biomass reaction into its constituent parts
+biomass = protein + DNA + RNA + carbohydrate + lipid + other
+as described in the recon 2 paper, supplementary note 2
