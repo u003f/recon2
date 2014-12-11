@@ -36,3 +36,7 @@ recon 2.1.5
 * removed splice variants from the model
 * corrected GENE_ASSOCIATION bracketing error for R_ATPS4m
 * rebuilt GENE_ASSOCIATIONs in disjunctive normal form, with lists of alternative complexes: "(E1 and E2) or (E1 and E3)", rather than "E1 and (E2 or E3)"
+
+
+recon 2.1.6
+* made set of changes as described in pmid:24907410 and defined by Supplementary File 2
