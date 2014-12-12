@@ -40,3 +40,8 @@ recon 2.1.5
 
 recon 2.1.6
 * made set of changes as described in pmid:24907410 and defined by Supplementary File 2
+
+
+recon 2.1.7
+* modified reaction bounds as described in pmid:25028891 tables 2&3
+* removed R_G5SADs and merged R_AIRCr with R_PRASCS, as described in the same paper
