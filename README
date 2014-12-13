@@ -20,19 +20,16 @@ These files describe iterative improvements to the "recon 2" model of human meta
 * add drug metabolism as described in pmid:25345908
 
 [2.1.3]
-
 * re-added CHARGE that went missing during the 2 -> 2.1 conversion
 * add new tranport reactions as described in pmid:24653705, and defined by TransportModule13820.mat
 * .. and modifications to existing transporters described at the end of supplementary table 2
 
 [2.1.2]
-
 split biomass reaction into its constituent parts
 biomass = protein + DNA + RNA + carbohydrate + lipid + other
 as described in the recon 2 paper, supplementary note 2
 
 [2.1.1]
-
 * removed abstract concept of limited carbon uptake
 * replaced in/ex exchange reaction pairs with single reactions
 * limited glucose (M_glc_D_b), essential fatty acids (M_lnlc_b, M_lnlnca_b), amino acids (M_his_L_b, M_ile_L_b, M_leu_L_b, M_lys_L_b, M_met_L_b, M_phe_L_b, M_thr_L_b, M_trp_L_b, M_val_L_b) and vitamins (M_pnto_R_b, M_ribflv_b) to a supply rate of one unit
