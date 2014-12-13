@@ -1,10 +1,37 @@
 These files describe iterative improvements to the "recon 2" model of human metabolism (doi:10.1038/nbt.2488, biomodels:MODEL1109130000)
 
+[2.1.8]
+* moved InChI strings from notes to annotation
+* remade annotations as per pmid:24468196
 
-recon 2.1 (arXiv:1311.5696, biomodels:MODEL1311110000) is as described previously
+[2.1.7]
+* modified reaction bounds as described in pmid:25028891 tables 2&3
+* removed R_G5SADs and merged R_AIRCr with R_PRASCS, as described in the same paper
 
+[2.1.6]
+* made set of changes as described in pmid:24907410 and defined by Supplementary File 2
 
-recon 2.1.1
+[2.1.5]
+* removed splice variants from the model
+* corrected GENE_ASSOCIATION bracketing error for R_ATPS4m
+* rebuilt GENE_ASSOCIATIONs in disjunctive normal form, with lists of alternative complexes: "(E1 and E2) or (E1 and E3)", rather than "E1 and (E2 or E3)"
+
+[2.1.4]
+* add drug metabolism as described in pmid:25345908
+
+[2.1.3]
+
+* re-added CHARGE that went missing during the 2 -> 2.1 conversion
+* add new tranport reactions as described in pmid:24653705, and defined by TransportModule13820.mat
+* .. and modifications to existing transporters described at the end of supplementary table 2
+
+[2.1.2]
+
+split biomass reaction into its constituent parts
+biomass = protein + DNA + RNA + carbohydrate + lipid + other
+as described in the recon 2 paper, supplementary note 2
+
+[2.1.1]
 
 * removed abstract concept of limited carbon uptake
 * replaced in/ex exchange reaction pairs with single reactions
@@ -13,40 +40,4 @@ recon 2.1.1
 * the resultant model has maximum growth rate 1.689
 * .. though growth is independent of glucose
 
-
-recon 2.1.2
-
-split biomass reaction into its constituent parts
-biomass = protein + DNA + RNA + carbohydrate + lipid + other
-as described in the recon 2 paper, supplementary note 2
-
-
-recon 2.1.3
-
-* re-added CHARGE that went missing during the 2 -> 2.1 conversion
-* add new tranport reactions as described in pmid:24653705, and defined by TransportModule13820.mat
-* .. and modifications to existing transporters described at the end of supplementary table 2
-
-
-recon 2.1.4
-* add drug metabolism as described in pmid:25345908
-
-
-recon 2.1.5
-* removed splice variants from the model
-* corrected GENE_ASSOCIATION bracketing error for R_ATPS4m
-* rebuilt GENE_ASSOCIATIONs in disjunctive normal form, with lists of alternative complexes: "(E1 and E2) or (E1 and E3)", rather than "E1 and (E2 or E3)"
-
-
-recon 2.1.6
-* made set of changes as described in pmid:24907410 and defined by Supplementary File 2
-
-
-recon 2.1.7
-* modified reaction bounds as described in pmid:25028891 tables 2&3
-* removed R_G5SADs and merged R_AIRCr with R_PRASCS, as described in the same paper
-
-
-recon 2.1.8
-* moved InChI strings from notes to annotation
-* remade annotations as per pmid:24468196
+recon 2.1 (arXiv:1311.5696, biomodels:MODEL1311110000) is as described previously
