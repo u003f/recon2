@@ -1,4 +1,8 @@
-These files describe iterative improvements to the "recon 2" model of human metabolism (doi:10.1038/nbt.2488, biomodels:MODEL1109130000)
+These files describe iterative improvements to the "recon 2" model of human metabolism (pmid:23455439, biomodels:MODEL1109130000)
+
+[2.1.9]
+* removed duplicate reactions
+* removed some lumped reactions of the form x1 -> xN, where the constituent steps x1 -> x2 -> .. -> xN are present
 
 [2.1.8]
 * moved InChI strings from notes to annotation
