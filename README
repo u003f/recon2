@@ -42,3 +42,18 @@ as described in the recon 2 paper, supplementary note 2
 * .. though growth is independent of glucose
 
 recon 2.1 (arXiv:1311.5696, biomodels:MODEL1311110000) is as described previously
+
+
+TODO
+
+1. remove duplicate metabolites
+2. remove duplicate reactions
+3. remove lumped reactions that are defined elsewhere as atomic steps
+4. check reactions with LB = UB = 0
+5. check uncatalysed, unreferenced reactions
+6. how should we include enzymes?
+7. finish mass balancing
+8. check ATP production for glucose, fructose, various fatty acids
+9. check fatty acid production for glucose
+10. remove subsystems
+11. release in Cobra and FBC formats
