@@ -1,5 +1,8 @@
 These files describe iterative improvements to the "recon 2" model of human metabolism (pmid:23455439, biomodels:MODEL1109130000)
 
+[2.1.10]
+* undid annotation changes (pmid:24468196) from 2.1.8
+
 [2.1.9]
 * removed duplicate reactions
 * removed some lumped reactions of the form x1 -> xN, where the constituent steps x1 -> x2 -> .. -> xN are present
@@ -47,13 +50,9 @@ recon 2.1 (arXiv:1311.5696, biomodels:MODEL1311110000) is as described previousl
 TODO
 
 1. remove duplicate metabolites
-2. remove duplicate reactions
-3. remove lumped reactions that are defined elsewhere as atomic steps
-4. check reactions with LB = UB = 0
-5. check uncatalysed, unreferenced reactions
-6. how should we include enzymes?
-7. finish mass balancing
-8. check ATP production for glucose, fructose, various fatty acids
-9. check fatty acid production for glucose
-10. remove subsystems
-11. release in Cobra and FBC formats
+2. check reactions with LB = UB = 0
+3. check uncatalysed, unreferenced reactions
+4. finish mass balancing
+5. check ATP production for glucose, fructose, various fatty acids
+6. check fatty acid production for glucose
+7. release in Cobra and FBC formats
