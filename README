@@ -1,7 +1,7 @@
 These files describe iterative improvements to the "recon 2" model of human metabolism (pmid:23455439, biomodels:MODEL1109130000)
 
 [2.1.10]
-* undid annotation changes (pmid:24468196) from 2.1.8
+* undid annotation changes from 2.1.6 (pmid:24907410) and 2.1.8 (pmid:24468196)
 
 [2.1.9]
 * removed duplicate reactions
