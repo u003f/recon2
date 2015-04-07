@@ -1,0 +1,5 @@
+These files describe iterative improvements to the "recon 2" model of human metabolism (pmid:23455439, biomodels:MODEL1109130000).
+
+The models directory contains our ongoing improvements, along with various recon 2 derivatives published by other groups.
+
+The tests directory contains various unit tests that may be applied to these models.
