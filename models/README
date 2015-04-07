@@ -1,5 +1,49 @@
-This directory contains various derivatives of the "recon 2" model of human metabolism (pmid:23455439, biomodels:MODEL1109130000).
+This directory contains various derivatives of the "recon 2" model of human metabolism (pmid:23455439).
 
+== ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
+
+recon_1.xml
+Duarte et al (2007): "recon 1" model of human metabolism
+http://identifiers.org/pubmed/17267599
+http://identifiers.org/biomodels.db/MODEL6399676120
+
+== ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
+
+recon_2.xml
+Thiele et al (2013): "recon 2" model of human metabolism
+http://identifiers.org/pubmed/23455439
+http://identifiers.org/biomodels.db/MODEL1109130000
+
+== ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
+
+recon_2.02.xml
+"recon 2.02": minor update (2013)
+recon2model.v02.xml downloaded from http://humanmetabolism.org/?page_id=75
+Note: this was submitted to BioModels on 7 Mar 15
+
+== ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
+
+recon_2.03.xml
+Haraldsdottir et al (2014): "recon 2.03" semantic update
+http://identifiers.org/pubmed/24468196
+downloaded from http://humanmetabolism.org/?page_id=75
+Note: the .mat file was translated to SBML using the Cobra toolbox (http://opencobra.sf.net/) function “writeCbModel”, which means the annotations have been lost [!]
+Note: this was submitted to BioModels on 7 Mar 15
+
+== ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
+
+recon_2.1.xml
+Smallbone (2013): "recon 2.1" balancing of recon 2
+http://identifiers.org/arxiv/1311.5696
+http://identifiers.org/biomodels.db/MODEL1311110000
+
+== ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
+
+quek14.xml [7 Feb 14]
+Quek et al (2014): "reducing Recon 2 for steady-state flux analysis of HEK cell culture"
+http://identifiers.org/pubmed/24907410
+
+== ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
 recon_2.2.xml
 is our set of iterative improvements to recon 2
@@ -49,3 +93,4 @@ as described in the recon 2 paper, supplementary note 2
 * the resultant model has maximum growth rate 1.689
 * .. though growth is independent of glucose
 
+== ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
