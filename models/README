@@ -91,13 +91,7 @@ as described in the recon 2 paper, supplementary note 2
 [2.1.28, as per 2.1.8]
 * moved InChI strings from notes to annotation
 
-the changes below are not (yet) re-incorporated
-
-[2.1.9]
-* removed duplicate reactions
+[2.1.29, as per 2.1.8]
 * removed some lumped reactions of the form x1 -> xN, where the constituent steps x1 -> x2 -> .. -> xN are present
-
-[2.1.10]
-* undid annotation changes from 2.1.6 (pmid:24907410) and 2.1.8 (pmid:24468196)
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
