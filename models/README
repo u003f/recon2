@@ -88,11 +88,10 @@ as described in the recon 2 paper, supplementary note 2
 * modified reaction bounds as described in pmid:25028891 tables 2&3
 * removed R_G5SADs and merged R_AIRCr with R_PRASCS, as described in the same paper
 
-the changes below are not (yet) re-incorporated
-
-[2.1.8]
+[2.1.28, as per 2.1.8]
 * moved InChI strings from notes to annotation
-* remade annotations as per pmid:24468196
+
+the changes below are not (yet) re-incorporated
 
 [2.1.9]
 * removed duplicate reactions
