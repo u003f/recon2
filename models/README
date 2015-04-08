@@ -80,10 +80,11 @@ as described in the recon 2 paper, supplementary note 2
 * note this update starts from the version 2.1.5
 * automated balancing of R-groups
 
-the changes below are not (yet) re-incorporated
+[2.1.26]
+* made set of changes as described in pmid:24907410 and defined by Supplementary File 2 [as per 2.1.6]
+* the resultant model has reduced maximum growth rate 1.568
 
-[2.1.6]
-* made set of changes as described in pmid:24907410 and defined by Supplementary File 2
+the changes below are not (yet) re-incorporated
 
 [2.1.7]
 * modified reaction bounds as described in pmid:25028891 tables 2&3
