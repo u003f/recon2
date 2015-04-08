@@ -19,7 +19,7 @@ http://identifiers.org/biomodels.db/MODEL1109130000
 recon_2.02.xml
 "recon 2.02": minor update (2013)
 recon2model.v02.xml downloaded from http://humanmetabolism.org/?page_id=75
-Note: this was submitted to BioModels on 7 Mar 15
+Note: this was submitted to BioModels on 7 Apr 15
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
@@ -28,7 +28,7 @@ Haraldsdottir et al (2014): "recon 2.03" semantic update
 http://identifiers.org/pubmed/24468196
 downloaded from http://humanmetabolism.org/?page_id=75
 Note: the .mat file was translated to SBML using the Cobra toolbox (http://opencobra.sf.net/) function “writeCbModel”, which means the annotations have been lost [!]
-Note: this was submitted to BioModels on 7 Mar 15
+Note: this was submitted to BioModels on 7 Apr 15
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
@@ -39,9 +39,10 @@ http://identifiers.org/biomodels.db/MODEL1311110000
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
-quek14.xml [7 Feb 14]
+quek14.xml
 Quek et al (2014): "reducing Recon 2 for steady-state flux analysis of HEK cell culture"
 http://identifiers.org/pubmed/24907410
+Note: this was submitted to BioModels on 7 Apr 15
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
@@ -76,7 +77,7 @@ is our set of iterative improvements to recon 2
 
 [2.1.3]
 * re-added CHARGE that went missing during the 2 -> 2.1 conversion
-* add new tranport reactions as described in pmid:24653705, and defined by TransportModule13820.mat
+* add new transport reactions as described in pmid:24653705, and defined by TransportModule13820.mat
 * .. and modifications to existing transporters described at the end of supplementary table 2
 
 [2.1.2]
