@@ -1,4 +1,4 @@
-This directory contains various derivatives of the "recon 2" model of human metabolism (pmid:23455439).
+This directory contains various derivatives of the "recon 2" model of human metabolism (http://identifiers.org/pubmed/23455439).
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
@@ -42,7 +42,7 @@ http://identifiers.org/biomodels.db/MODEL1311110000
 quek14.xml
 Quek et al (2014): "reducing Recon 2 for steady-state flux analysis of HEK cell culture"
 http://identifiers.org/pubmed/24907410
-Note: this was submitted to BioModels on 7 Apr 15
+http://identifiers.org/biomodels.db/MODEL1504080000 [submitted by KS]
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
@@ -51,9 +51,9 @@ is our set of iterative improvements to recon 2
 
 [2.1.1]
 * start with recon_2.1.xml
-* removed abstract concept of limited carbon uptake
-* replaced in/ex exchange reaction pairs with single reactions
-* limited glucose (M_glc_D_b), essential fatty acids (M_lnlc_b, M_lnlnca_b), amino acids (M_his_L_b, M_ile_L_b, M_leu_L_b, M_lys_L_b, M_met_L_b, M_phe_L_b, M_thr_L_b, M_trp_L_b, M_val_L_b) and vitamins (M_pnto_R_b, M_ribflv_b) to a supply rate of one unit
+* remove abstract concept of limited carbon uptake
+* replace in/ex exchange reaction pairs with single reactions
+* limit glucose (M_glc_D_b), essential fatty acids (M_lnlc_b, M_lnlnca_b), amino acids (M_his_L_b, M_ile_L_b, M_leu_L_b, M_lys_L_b, M_met_L_b, M_phe_L_b, M_thr_L_b, M_trp_L_b, M_val_L_b) and vitamins (M_pnto_R_b, M_ribflv_b) to a supply rate of one unit
 * other metabolites in the minimal medium (M_nh4_b, M_o2_b, M_pi_b, M_so4_b, M_ca2_b, M_cl_b, M_fe2_b, M_k_b, M_na1_b, M_h_b, M_h2o_b) have unlimited supply
 * the resultant model has maximum growth rate 1.689
 * .. though growth is independent of glucose
@@ -64,34 +64,39 @@ biomass = protein + DNA + RNA + carbohydrate + lipid + other
 as described in the recon 2 paper, supplementary note 2
 
 [2.1.3]
-* re-added CHARGE that went missing during the 2 -> 2.1 conversion
-* add new transport reactions as described in pmid:24653705, and defined by TransportModule13820.mat
+* re-add CHARGE that went missing during the 2 -> 2.1 conversion
+* add new transport reactions as described in http://identifiers.org/pubmed/24653705, and defined by TransportModule13820.mat
 * .. and modifications to existing transporters described at the end of supplementary table 2
 
 [2.1.4]
-* add drug metabolism as described in pmid:25345908
+* add drug metabolism as described in http://identifiers.org/pubmed/25345908
 
 [2.1.5]
-* removed splice variants from the model
-* corrected GENE_ASSOCIATION bracketing error for R_ATPS4m
-* rebuilt GENE_ASSOCIATIONs in disjunctive normal form, with lists of alternative complexes: "(E1 and E2) or (E1 and E3)", rather than "E1 and (E2 or E3)"
+* remove splice variants from the model
+* correct GENE_ASSOCIATION bracketing error for R_ATPS4m
+* rebuild GENE_ASSOCIATIONs in disjunctive normal form, with lists of alternative complexes: "(E1 and E2) or (E1 and E3)", rather than "E1 and (E2 or E3)"
 
 [2.1.20]
 * note this update starts from the version 2.1.5
-* automated balancing of R-groups ©neilswainston
+* automated balancing of model (including R-groups) ©neilswainston
 
 [2.1.26, as per 2.1.6]
-* made set of changes as described in pmid:24907410 and defined by Supplementary File 2
+* make set of changes as described in http://identifiers.org/pubmed/24907410 and defined by Supplementary File 2
 * the resultant model has reduced maximum growth rate 1.568
 
 [2.1.27, as per 2.1.7]
-* modified reaction bounds as described in pmid:25028891 tables 2&3
-* removed R_G5SADs and merged R_AIRCr with R_PRASCS, as described in the same paper
+* modify reaction bounds as described in http://identifiers.org/pubmed/25028891 tables 2&3
+* remove R_G5SADs and merged R_AIRCr with R_PRASCS, as described in the same paper
 
 [2.1.28, as per 2.1.8]
-* moved InChI strings from notes to annotation
+* move InChI strings from notes to annotation
 
-[2.1.29, as per 2.1.8]
-* removed some lumped reactions of the form x1 -> xN, where the constituent steps x1 -> x2 -> .. -> xN are present
+[2.1.29, as per 2.1.9]
+* remove some lumped reactions of the form x1 -> xN, where the constituent steps x1 -> x2 -> .. -> xN are present
+
+[2.1.30]
+* turn on mitochondrial phosphate transporter
+* map genes to HGNC ©pauldobson
+* added enzymes as modifiers
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
