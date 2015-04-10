@@ -6,6 +6,8 @@ recon_1.xml
 Duarte et al (2007): "recon 1" model of human metabolism
 http://identifiers.org/pubmed/17267599
 http://identifiers.org/biomodels.db/MODEL6399676120
+* added bounds as defined at http://bigg.ucsd.edu/
+-> new model submitted to BioModels by KS on 10 Apr 15
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
@@ -43,6 +45,8 @@ quek14.xml
 Quek et al (2014): "reducing Recon 2 for steady-state flux analysis of HEK cell culture"
 http://identifiers.org/pubmed/24907410
 http://identifiers.org/biomodels.db/MODEL1504080000 [submitted by KS]
+* boundary species set as BoundaryCondition
+-> new model submitted to BioModels by KS on 10 Apr 15
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
@@ -97,6 +101,13 @@ as described in the recon 2 paper, supplementary note 2
 [2.1.30]
 * turn on mitochondrial phosphate transporter
 * map genes to HGNC ©pauldobson
-* added enzymes as modifiers
+* add enzymes as modifiers
+* the resultant model has increased maximum growth rate 1.612
+
+[2.1.31]
+* make R_r0016 irreversible, to avoid free generation of o2
+* modified some InChI strings
+* remove R_r1435
+* make R_RE0583N, R_RE1441G, R_RE1810M, R_RE1836C, R_RE1836M, R_RE1957G, R_RE2972G, R_RE2972R, R_RE2973G, R_RE2973N, R_RE2974G, R_RE2974N, R_RE2974R irreversible
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **

@@ -1,6 +1,6 @@
 """
 Various tests to compare different flavours of recon 2.
-Updated: 9 Apr 15 by Kieran Smallbone
+Updated: 10 Apr 15 by Kieran Smallbone
 """
 
 import numpy
@@ -14,17 +14,15 @@ import libsbml
 
 
 INF = numpy.inf
-NaN = numpy.nan
+NAN = numpy.nan
 
 
 def run_all():
     """Runs all the tests on all the models"""
 
     model_names, model_path = list_models()
-    model_names = ['recon_2.2', 'quek14', 'recon_1', 'recon_2', 'recon_2.02', 'recon_2.03', 'recon_2.1']
-#     model_names = ['recon_2.2']
     for name in model_names:
-        print name
+        print '\n%s'%name
         filename = os.path.join(model_path, name + '.xml')
         max_fluxes(filename)
 
@@ -38,14 +36,14 @@ def list_models():
     """
 
     tests_path = os.path.dirname(__file__)
-    model_path = os.path.join(tests_path,'..','models')
+    model_path = os.path.join(tests_path, '..', 'models')
     model_path = os.path.normpath(model_path)
     model_names = []
     for filename in os.listdir(model_path):
         shortname, extension = os.path.splitext(filename)
         if extension == '.xml':
             model_names.append(shortname)
-    model_names.sort()
+    model_names.sort(reverse=True)  # ~ most recent first
     return model_names, model_path
 
 
@@ -71,23 +69,22 @@ def max_fluxes(model_filename):
     for normoxic in [True, False]:
 #     for normoxic in [False]:
         for carbon_source in [
-            # sugars
-            'EX_glc(e)',
-            'EX_fru(e)',
-            # fatty acids
-            'EX_ppa(e)', # C3:0
-            'EX_but(e)', # C4:0
-            'EX_octa(e)', # C8:0
-            'EX_HC02175(e)', # C10:0
-            'EX_HC02176(e)', # C12:0
-            'EX_ttdca(e)', # C14:0
-            'EX_hdca(e)', # C16:0
-            'EX_ocdca(e)', # C18:0
-            'EX_arach(e)', # C20:0
-            'EX_docosac_', # C22:0
-            'EX_lgnc(e)', # C24:0
-            'EX_hexc(e)', # C26:0
-            ]:
+                # sugars
+                'EX_glc(e)',
+                'EX_fru(e)',
+                # fatty acids
+                'EX_ppa(e)',        # C3:0
+                'EX_but(e)',        # C4:0
+                'EX_octa(e)',       # C8:0
+                'EX_HC02175(e)',    # C10:0
+                'EX_HC02176(e)',    # C12:0
+                'EX_ttdca(e)',      # C14:0
+                'EX_hdca(e)',       # C16:0
+                'EX_ocdca(e)',      # C18:0
+                'EX_arach(e)',      # C20:0
+                'EX_docosac_',      # C22:0
+                'EX_lgnc(e)',       # C24:0
+                'EX_hexc(e)']:      # C26:0
             f_opt = max_flux(model_filename, carbon_source, objective, normoxic, media)
             print '%s:\t%g'%(carbon_source, f_opt)
 
@@ -97,26 +94,25 @@ def max_flux(model_filename, carbon_source, objective, normoxic, media):
     Written to mimic neilswainston matlab function maxFlux
     """
     sbml = read_sbml(model_filename)
+    set_infinite_bounds(sbml)
     # block import reactions
     block_all_imports(sbml)
     # define carbon source
-    change_rxn_bounds(sbml, carbon_source, 1, 'b')
+    set_import_bounds(sbml, carbon_source, 1)
     # define media
-    change_rxn_bounds(sbml, media, -INF, 'l')
-#     change_rxn_bounds(sbml, media, INF, 'u')
+    set_import_bounds(sbml, media, INF)
     if normoxic:
-#         change_rxn_bounds(sbml, 'EX_o2(e)', -INF, 'l')
-        change_rxn_bounds(sbml, 'EX_o2(e)', INF, 'u')
+        set_import_bounds(sbml, 'EX_o2(e)', INF)
     # specify objective and maximise
     change_objective(sbml, objective)
     # avoid infinities
-    OBJ_MAX = 1e6
-    change_rxn_bounds(sbml, objective, OBJ_MAX, 'u')
+    obj_max = 1e6
+    change_rxn_bounds(sbml, objective, obj_max, 'u')
     v_sol, f_opt = optimize_cobra_model(sbml)
-    if f_opt > 0.9 * OBJ_MAX:
+    if f_opt > 0.9 * obj_max:
         f_opt = INF
     return f_opt
-    
+
 
 def read_sbml(filename):
     """
@@ -133,6 +129,12 @@ def block_all_imports(sbml):
     Written to mimic neilswainston matlab function blockAllImports
     """
     model = sbml.getModel()
+
+    # strip out format used in recon 2.1
+    species = model.getSpecies('M_carbon_e')
+    if species:
+        species.setBoundaryCondition(True)
+
     for reaction in model.getListOfReactions():
         nR, nP = 0, 0
         for reactant in reaction.getListOfReactants():
@@ -163,12 +165,7 @@ def change_rxn_bounds(sbml, rxn_name_list, value, bound_type='b'):
     if isinstance(bound_type, str):
         bound_type = [bound_type] * len(rxn_name_list)
     for index, rID in enumerate(rxn_name_list):
-        reaction = model.getReaction(rID)
-        if not reaction:
-            # try cobra replacements
-            rID = 'R_' + rID
-            rID = format_for_SBML_ID(rID)
-            reaction = model.getReaction(rID)
+        reaction = get_reaction_by_id(sbml, rID)
         if not reaction:
             print 'reaction %s not found'%rID
         else:
@@ -193,12 +190,7 @@ def change_objective(sbml, rxn_name_list, objective_coeff=1):
     if isinstance(objective_coeff, (int, float, long, complex)):
         objective_coeff = [objective_coeff] * len(rxn_name_list)
     for index, rID in enumerate(rxn_name_list):
-        reaction = model.getReaction(rID)
-        if not reaction:
-            # try cobra replacements
-            rID = 'R_' + rID
-            rID = format_for_SBML_ID(rID)
-            reaction = model.getReaction(rID)
+        reaction = get_reaction_by_id(sbml, rID)
         if not reaction:
             print 'reaction %s not found'%rID
         else:
@@ -208,24 +200,24 @@ def change_objective(sbml, rxn_name_list, objective_coeff=1):
 
 def format_for_SBML_ID(txt):
     """
-    Written to mimic the matlab function convertCobraToSBML:formatForSBMLID from http://opencobra.sf.net/
+    Written to mimic the matlab function formatForSBMLID from http://opencobra.sf.net/
     """
+    txt = 'R_' + txt
     for symbol, replacement in [
-        ('-','_DASH_'),
-        ('/','_FSLASH_'),
-        ('\\','_BSLASH_'),
-        ('(','_LPAREN_'),
-        (')','_RPAREN_'),
-        ('[','_LSQBKT_'),
-        (']','_RSQBKT_'),
-        (',','_COMMA_'),
-        ('.','_PERIOD_'),
-        ('\'','_APOS_'),
-        ('&','&amp'),
-        ('<','&lt'),
-        ('>','&gt'),
-        ('"','&quot')
-        ]:
+            ('-', '_DASH_'),
+            ('/', '_FSLASH_'),
+            ('\\', '_BSLASH_'),
+            ('(', '_LPAREN_'),
+            (')', '_RPAREN_'),
+            ('[', '_LSQBKT_'),
+            (']', '_RSQBKT_'),
+            (',', '_COMMA_'),
+            ('.', '_PERIOD_'),
+            ('\'', '_APOS_'),
+            ('&', '&amp'),
+            ('<', '&lt'),
+            ('>', '&gt'),
+            ('"', '&quot')]:
         txt = txt.replace(symbol, replacement)
     return txt
 
@@ -241,7 +233,7 @@ def optimize_cobra_model(sbml):
 
     N, L, U = cobra['S'], list(cobra['lb']), list(cobra['ub'])
     f, b = list(cobra['c']), list(cobra['b'])
-    v_sol, f_opt, __ = easy_lp(f, N, b, L, U, one=False)
+    v_sol, f_opt, conv = easy_lp(f, N, b, L, U, one=False)
     return v_sol, f_opt
 
 
@@ -328,8 +320,8 @@ def easy_lp(f, a, b, vlb, vub, one=False):
     lp.optimize()
 
     v = numpy.empty(len(f))
-    v[:] = NaN
-    f_opt = NaN
+    v[:] = NAN
+    f_opt = NAN
     conv = False
     if lp.Status == gurobipy.GRB.OPTIMAL:
         f_opt = lp.ObjVal
@@ -363,14 +355,84 @@ def easy_lp(f, a, b, vlb, vub, one=False):
             b.append(0.)
         v_sol = easy_lp(f, a, b, vlb, vub, one=False)[0]
         v = v_sol[:nR]
-    
+
     if f_opt == -0.0:
         f_opt = 0.0
 
-    return v, f_opt, conv	
+    return v, f_opt, conv
+
+
+def get_reaction_by_id(sbml, rID):
+    model = sbml.getModel()
+    reaction = model.getReaction(rID)
+    if not reaction:
+        # try cobra replacements
+        rID = format_for_SBML_ID(rID)
+        reaction = model.getReaction(rID)
+    if not reaction:
+        # try removing trailing underscore
+        if rID[-1] == '_':
+            rID = rID[:-1]
+        reaction = model.getReaction(rID)
+    if not reaction:
+        # try adding "_in"
+        reaction = model.getReaction(rID + '_in')
+    if not reaction:
+        # try known alternatives
+        rID_map = {
+            'R_DM_atp_c': 'R_HKt',  # alternative ATPase
+            'R_EX_HC02175_LPAREN_e_RPAREN': 'R_EX_dca_LPAREN_e_RPAREN_'  # alternative C10:0
+            }
+        if rID in rID_map:
+            rID = rID_map[rID]
+            reaction = get_reaction_by_id(sbml, rID)
+    return reaction
+
+
+def set_import_bounds(sbml, rxn_name_list, value):
+    model = sbml.getModel()
+    # convert single entries to lists
+    if isinstance(rxn_name_list, str):
+        rxn_name_list = [rxn_name_list]
+    if isinstance(value, (int, float, long, complex)):
+        value = [value] * len(rxn_name_list)
+    for index, rID in enumerate(rxn_name_list):
+        reaction = get_reaction_by_id(sbml, rID)
+        if not reaction:
+            print 'reaction %s not found'%rID
+        else:
+            nR, nP = 0, 0
+            for reactant in reaction.getListOfReactants():
+                sID = reactant.getSpecies()
+                if not model.getSpecies(sID).getBoundaryCondition():
+                    nR += 1
+            for product in reaction.getListOfProducts():
+                sID = product.getSpecies()
+                if not model.getSpecies(sID).getBoundaryCondition():
+                    nP += 1
+            kineticLaw = reaction.getKineticLaw()
+            val = abs(value[index])
+            if (nR == 0) and (nP == 1):
+                kineticLaw.getParameter('UPPER_BOUND').setValue(val)
+            elif (nR == 1) and (nP == 0):
+                kineticLaw.getParameter('LOWER_BOUND').setValue(-val)
+            else:
+                print 'reaction %s not import'%rID
+
+
+def set_infinite_bounds(sbml):
+    """Set default bounds to INF, rather than 1000 (say)"""
+    model = sbml.getModel()
+    for reaction in model.getListOfReactions():
+        kineticLaw = reaction.getKineticLaw()
+        param = kineticLaw.getParameter('LOWER_BOUND')
+        if param.getValue() < -100:
+            param.setValue(-INF)
+        param = kineticLaw.getParameter('UPPER_BOUND')
+        if param.getValue() > 100:
+            param.setValue(INF)
 
 
 if __name__ == '__main__':
     run_all()
     print 'DONE!'
-    
