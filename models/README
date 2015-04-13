@@ -21,16 +21,13 @@ http://identifiers.org/biomodels.db/MODEL1109130000
 recon_2.02.xml
 "recon 2.02": minor update (2013)
 recon2model.v02.xml downloaded from http://humanmetabolism.org/?page_id=75
-Note: this was submitted to BioModels on 7 Apr 15
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
 recon_2.03.xml
 Haraldsdottir et al (2014): "recon 2.03" semantic update
 http://identifiers.org/pubmed/24468196
-downloaded from http://humanmetabolism.org/?page_id=75
-Note: the .mat file was translated to SBML using the Cobra toolbox (http://opencobra.sf.net/) function “writeCbModel”, which means the annotations have been lost [!]
-Note: this was submitted to BioModels on 7 Apr 15
+http://identifiers.org/biomodels.db/MODEL1504130000 [submitted by KS]
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
 
@@ -106,8 +103,11 @@ as described in the recon 2 paper, supplementary note 2
 
 [2.1.31]
 * make R_r0016 irreversible, to avoid free generation of o2
-* modified some InChI strings
-* remove R_r1435
 * make R_RE0583N, R_RE1441G, R_RE1810M, R_RE1836C, R_RE1836M, R_RE1957G, R_RE2972G, R_RE2972R, R_RE2973G, R_RE2973N, R_RE2974G, R_RE2974N, R_RE2974R irreversible
+* remove R_r1435
+* modify some InChI strings
+
+[2.1.32]
+* add a couple of missing fatty-acid--CoA ligases and fatty-acid-CoA transporters
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **

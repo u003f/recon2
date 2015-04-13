@@ -21,6 +21,7 @@ def run_all():
     """Runs all the tests on all the models"""
 
     model_names, model_path = list_models()
+    model_names = ['recon_2.2']
     for name in model_names:
         print '\n%s'%name
         filename = os.path.join(model_path, name + '.xml')
@@ -67,7 +68,6 @@ def max_fluxes(model_filename):
         ]
     objective = 'DM_atp_c_'
     for normoxic in [True, False]:
-#     for normoxic in [False]:
         for carbon_source in [
                 # sugars
                 'EX_glc(e)',
@@ -75,6 +75,7 @@ def max_fluxes(model_filename):
                 # fatty acids
                 'EX_ppa(e)',        # C3:0
                 'EX_but(e)',        # C4:0
+                'EX_hx(e)',         # C6:0
                 'EX_octa(e)',       # C8:0
                 'EX_HC02175(e)',    # C10:0
                 'EX_HC02176(e)',    # C12:0
@@ -84,7 +85,29 @@ def max_fluxes(model_filename):
                 'EX_arach(e)',      # C20:0
                 'EX_docosac_',      # C22:0
                 'EX_lgnc(e)',       # C24:0
-                'EX_hexc(e)']:      # C26:0
+                'EX_hexc(e)',      # C26:0
+                # amino acids
+                'EX_ala_L(e)',
+                'EX_arg_L(e)',
+                'EX_asn_L(e)',
+                'EX_asp_L(e)',
+                'EX_cys_L(e)',
+                'EX_gln_L(e)',
+                'EX_glu_L(e)',
+                'EX_gly(e)',
+                'EX_his_L(e)',
+                'EX_ile_L(e)',
+                'EX_leu_L(e)',
+                'EX_lys_L(e)',
+                'EX_met_L(e)',
+                'EX_phe_L(e)',
+                'EX_pro_L(e)',
+                'EX_ser_L(e)',
+                'EX_thr_L(e)',
+                'EX_trp_L(e)',
+                'EX_tyr_L(e)',
+                'EX_val_L(e)',
+                ]:
             f_opt = max_flux(model_filename, carbon_source, objective, normoxic, media)
             print '%s:\t%g'%(carbon_source, f_opt)
 
