@@ -85,7 +85,7 @@ def max_fluxes(model_filename):
                 'EX_arach(e)',      # C20:0
                 'EX_docosac_',      # C22:0
                 'EX_lgnc(e)',       # C24:0
-                'EX_hexc(e)',      # C26:0
+                'EX_hexc(e)',       # C26:0
                 # amino acids
                 'EX_ala_L(e)',
                 'EX_arg_L(e)',
