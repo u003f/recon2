@@ -135,7 +135,7 @@ def model_balancing(sbml, display_errors = False):
             elif formula:
                 num_imbalanced += 1
                 if display_errors:
-                    print '\n%s\t%s\t%s\t[%s]'%('reaction', rID, 'imbalanced', formula)
+                    print '\n%s\t%s\t%s\t[%s]'%('reaction', rID, 'unbalanced', formula)
             else:
                 num_balanced += 1
             if display_errors and (unknown or formula):
@@ -143,7 +143,7 @@ def model_balancing(sbml, display_errors = False):
 
     print ''
     print '%g\t%s'%(num_balanced, 'reactions balanced')
-    print '%g\t%s'%(num_imbalanced, 'reactions imbalanced')
+    print '%g\t%s'%(num_imbalanced, 'reactions unbalanced')
     print '%g\t%s'%(num_unknown, 'reactions unknown')
 
 
