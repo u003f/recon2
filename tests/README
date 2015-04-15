@@ -52,38 +52,6 @@ reaction	R_NOS2	imbalanced	[H-2O-1]
 2 M_o2_c + M_nadph_c     + 2 M_nwharg_c + M_h_c --> M_h2o_c + M_nadp_c      + 2 M_citr_L_c + 2 M_no_c
 2 O2     + C21H26N7O17P3 + 2 C6H14N4O3  + H     --> H2O     + C21H25N7O17P3 + 2 C6H13N3O3  + 2 NO
 
-reaction	R_r0023	unknown	[]
-M_nadh_c      + 2 M_HC00617_c + M_h_c <-> M_nad_c       + 2 M_HC00619_c
-C21H27N7O14P2 + 2 .           + H     <-> C21H26N7O14P2 + 2 H
-
-reaction	R_r0510	unknown	[]
-M_o2_c + M_pmtcoa_c     + 2 M_HC00619_c <-> 2 M_h2o_c + 2 M_HC00617_c + M_hdcoa_c      + 4 M_h_c
-O2     + C37H66N7O17P3S + 2 H           <-> 2 H2O     + 2 .           + C37H60N7O17P3S + 4 H
-
-reaction	R_r0511	unknown	[]
-M_o2_c + M_stcoa_c      + 2 M_HC00619_c <-> 2 M_h2o_c + M_odecoa_c     + 2 M_HC00617_c
-O2     + C39H66N7O17P3S + 2 H           <-> 2 H2O     + C39H64N7O17P3S + 2 .
-
-reaction	R_RE2028C	unknown	[]
-M_CE5272_c  <-> M_h_c + M_co2_c + M_CE1264_c  + 2 M_e_c
-C12H13N2O5S <-> H     + CO2     + C11H12N2O3S + 2 .
-
-reaction	R_RE2591C	unknown	[]
-M_urate_c <-> M_CE6252_c + M_e_c + M_h_c
-C5H4N4O3  <-> C5H3N4O3   + .     + H
-
-reaction	R_RE2704C	unknown	[]
-M_yvite_c <-> M_h_c + M_CE7047_c + 2 M_e_c
-C28H48O2  <-> H     + C28H47O2   + 2 .
-
-reaction	R_RE2898C	unknown	[]
-M_C01041_c <-> M_dhdascb_c + M_e_c + M_h_c
-C6H6O6     <-> C6H5O6      + .     + H
-
-reaction	R_RE3410C	unknown	[]
-M_CE6502_c <-> M_CE5528_c + M_h_c + M_e_c
-C18H31O4   <-> C18H30O4   + H     + .
-
 reaction	R_RN0029C	imbalanced	[H-2O-1]
 2 M_o2_c + 2 M_nadph_c     + M_CN0022_c + 2 M_h_c --> 2 M_h2o_c + 2 M_nadp_c      + M_CN0023_c
 2 O2     + 2 C21H26N7O17P3 + C20H20O2   + 2 H     --> 2 H2O     + 2 C21H25N7O17P3 + C20H18O3
@@ -172,9 +140,9 @@ reaction	R_PMTCOAtm	imbalanced	[H-4]
 M_pmtcoa_c     --> M_pmtcoa_m
 C37H66N7O17P3S --> C37H62N7O17P3S
 
-7020	reactions balanced
+7028	reactions balanced
 24	reactions imbalanced
-13	reactions unknown
+5	reactions unknown
 
 EX_glc(e):	31
 EX_fru(e):	31

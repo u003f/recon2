@@ -127,7 +127,7 @@ def model_balancing(sbml, display_errors = False):
     for reaction in model.getListOfReactions():
         rID = reaction.getId()
         if rID not in rID_list:
-            formula, unknown = element_balance_reaction(rID, sbml)
+            formula, unknown = elementally_balance_reaction(rID, sbml)
             if unknown:
                 num_unknown += 1
                 if display_errors:
@@ -658,7 +658,7 @@ def map_to_formula(formula_map):
     return formula
 
 
-def element_balance_reaction(rID, sbml):
+def elementally_balance_reaction(rID, sbml):
     """
     Determine the overall elemental imbalance of a reaction
     """
@@ -671,14 +671,14 @@ def element_balance_reaction(rID, sbml):
         sID = reactant.getSpecies()
         formula = get_formula(sID, sbml)
         stoich = reactant.getStoichiometry()
-        if not formula_to_map(formula):
+        if not formula_to_map(formula) and not (formula in ['.']):
             unknown = True
         overall_formula = add_formulae(overall_formula, formula, -stoich)
     for reactant in reaction.getListOfProducts():
         sID = reactant.getSpecies()
         formula = get_formula(sID, sbml)
         stoich = reactant.getStoichiometry()
-        if not formula_to_map(formula):
+        if not formula_to_map(formula) and not (formula in ['.']):
             unknown = True
         overall_formula = add_formulae(overall_formula, formula, stoich)
 
