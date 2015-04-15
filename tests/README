@@ -1,1 +1,346 @@
 This directory contains unit tests that may be applied to the derivatives of the "recon 2" model of human metabolism (pmid:23455439), found in /models.
+
+General statistics are given for each model, then they are tested for elemental balancing, and ATP production from various nutrients. The latest output of the tests are given below.
+
+
+recon_2.2
+
+8344	species
+species	M_retinal_e	has no SBO term
+species	M_retinal_b	has no SBO term
+2	with SBO term	-1
+6177	with SBO term	247
+2165	with SBO term	252
+5361	variable
+818	fixed
+2165	non-reactants
+
+7899	reactions
+4144	with SBO term	176
+2908	with SBO term	185
+847	with SBO term	397
+7057	non-source/sink
+842	source/sink
+
+1717	genes
+
+reaction	R_ABO5g	imbalanced	[C-15H-31R]
+M_udpacgal_g  + M_fucgalacgalfuc12gal14acglcgalgluside_hs_g --> M_h_g + M_udp_g      + M_acgalfucgalacgalfuc12gal14acglcgalgluside_hs_g
+C17H25N3O17P2 + C86H153N3O41                                --> H     + C9H11N2O12P2 + C79H135N4O46R
+
+reaction	R_ABO6g	imbalanced	[C-15H-31R]
+M_udpacgal_g  + M_fucgalacglcgal14acglcgalgluside_hs_g --> M_h_g + M_udp_g      + M_acgalfucgalacglcgal14acglcgalgluside_hs_g
+C17H25N3O17P2 + C80H143N3O37                           --> H     + C9H11N2O12P2 + C73H125N4O42R
+
+reaction	R_ABO8g	imbalanced	[C-15H-31R]
+M_udpgal_g    + M_fucgalacglcgal14acglcgalgluside_hs_g --> M_h_g + M_udp_g      + M_galfucgalacglcgal14acglcgalgluside_hs_g
+C15H22N2O17P2 + C80H143N3O37                           --> H     + C9H11N2O12P2 + C71H122N3O42R
+
+reaction	R_AIRCr_PRASCS	imbalanced	[H2]
+M_co2_c + M_air_c    + M_atp_c       + M_asp_L_c <-> 2 M_h_c + M_adp_c       + M_pi_c + M_25aics_c
+CO2     + C8H13N3O7P + C10H12N5O13P3 + C4H6NO4   <-> 2 H     + C10H15N5O10P2 + HO4P   + C13H15N4O12P
+
+reaction	R_B3GNT12g	imbalanced	[C-15H-31R]
+M_uacgam_g    + M_galacglcgal14acglcgalgluside_hs_g --> M_h_g + M_udp_g      + M_acglc13galacglcgal14acglcgalgluside_hs_g
+C17H25N3O17P2 + C74H133N3O33                        --> H     + C9H11N2O12P2 + C67H115N4O38R
+
+reaction	R_B3GNT314g	imbalanced	[C-15H-31R]
+M_udpgal_g    + M_acglcgalacglcgal14acglcgalgluside_hs_g --> M_h_g + M_udp_g      + M_galacglcgalacglcgal14acglcgalgluside_hs_g
+C15H22N2O17P2 + C82H146N4O38                             --> H     + C9H11N2O12P2 + C73H125N4O43R
+
+reaction	R_NOS2	imbalanced	[H-2O-1]
+2 M_o2_c + M_nadph_c     + 2 M_nwharg_c + M_h_c --> M_h2o_c + M_nadp_c      + 2 M_citr_L_c + 2 M_no_c
+2 O2     + C21H26N7O17P3 + 2 C6H14N4O3  + H     --> H2O     + C21H25N7O17P3 + 2 C6H13N3O3  + 2 NO
+
+reaction	R_r0023	unknown	[]
+M_nadh_c      + 2 M_HC00617_c + M_h_c <-> M_nad_c       + 2 M_HC00619_c
+C21H27N7O14P2 + 2 .           + H     <-> C21H26N7O14P2 + 2 H
+
+reaction	R_r0510	unknown	[]
+M_o2_c + M_pmtcoa_c     + 2 M_HC00619_c <-> 2 M_h2o_c + 2 M_HC00617_c + M_hdcoa_c      + 4 M_h_c
+O2     + C37H66N7O17P3S + 2 H           <-> 2 H2O     + 2 .           + C37H60N7O17P3S + 4 H
+
+reaction	R_r0511	unknown	[]
+M_o2_c + M_stcoa_c      + 2 M_HC00619_c <-> 2 M_h2o_c + M_odecoa_c     + 2 M_HC00617_c
+O2     + C39H66N7O17P3S + 2 H           <-> 2 H2O     + C39H64N7O17P3S + 2 .
+
+reaction	R_RE2028C	unknown	[]
+M_CE5272_c  <-> M_h_c + M_co2_c + M_CE1264_c  + 2 M_e_c
+C12H13N2O5S <-> H     + CO2     + C11H12N2O3S + 2 .
+
+reaction	R_RE2591C	unknown	[]
+M_urate_c <-> M_CE6252_c + M_e_c + M_h_c
+C5H4N4O3  <-> C5H3N4O3   + .     + H
+
+reaction	R_RE2704C	unknown	[]
+M_yvite_c <-> M_h_c + M_CE7047_c + 2 M_e_c
+C28H48O2  <-> H     + C28H47O2   + 2 .
+
+reaction	R_RE2898C	unknown	[]
+M_C01041_c <-> M_dhdascb_c + M_e_c + M_h_c
+C6H6O6     <-> C6H5O6      + .     + H
+
+reaction	R_RE3410C	unknown	[]
+M_CE6502_c <-> M_CE5528_c + M_h_c + M_e_c
+C18H31O4   <-> C18H30O4   + H     + .
+
+reaction	R_RN0029C	imbalanced	[H-2O-1]
+2 M_o2_c + 2 M_nadph_c     + M_CN0022_c + 2 M_h_c --> 2 M_h2o_c + 2 M_nadp_c      + M_CN0023_c
+2 O2     + 2 C21H26N7O17P3 + C20H20O2   + 2 H     --> 2 H2O     + 2 C21H25N7O17P3 + C20H18O3
+
+reaction	R_RN0032C	imbalanced	[H-2O-1]
+2 M_o2_c + 2 M_nadph_c     + M_CN0018_c + 2 M_h_c --> 2 M_h2o_c + 2 M_nadp_c      + M_CN0019_c
+2 O2     + 2 C21H26N7O17P3 + C24H18O2   + 2 H     --> 2 H2O     + 2 C21H25N7O17P3 + C24H16O3
+
+reaction	R_ACNGALACGLCGAL14ACGLCGALGLUSIDEte	imbalanced	[C15H31R-1]
+M_acngalacglcgal14acglcgalgluside_hs_e <-> M_acngalacglcgal14acglcgalgluside_hs_c
+C70H118N4O41R                          <-> C85H149N4O41
+
+reaction	R_FUC13GALACGLCGAL14ACGLCGALGLUSIDEte	imbalanced	[C15H31R-1]
+M_fuc13galacglcgal14acglcgalgluside_hs_e <-> M_fuc13galacglcgal14acglcgalgluside_hs_c
+C65H112N3O37R                            <-> C80H143N3O37
+
+reaction	R_FUCACGALFUCGALACGLCGALGLUSIDEte	imbalanced	[C15H31R-1]
+M_fucacgalfucgalacglcgalgluside_hs_e <-> M_fucacgalfucgalacglcgalgluside_hs_c
+C65H112N3O36R                        <-> C80H143N3O36
+
+reaction	R_FUCACNGAL14ACGLCGALGLUSIDEte	imbalanced	[C15H31R-1]
+M_fucacngal14acglcgalgluside_hs_e <-> M_fucacngal14acglcgalgluside_hs_c
+C62H105N3O35R                     <-> C77H136N3O35
+
+reaction	R_FUCACNGALACGLCGALGLUSIDEte	imbalanced	[C15H31R-1]
+M_fucacngalacglcgalgluside_hs_e <-> M_fucacngalacglcgalgluside_hs_c
+C62H105N3O35R                   <-> C77H136N3O35
+
+reaction	R_FUCFUC132GALACGLCGAL14ACGLCGALGLUSIDEte	imbalanced	[C15H31R-1]
+M_fucfuc132galacglcgal14acglcgalgluside_hs_e <-> M_fucfuc132galacglcgal14acglcgalgluside_hs_c
+C71H122N3O41R                                <-> C86H153N3O41
+
+reaction	R_FUCFUCFUCGALACGLCGAL14ACGLCGALGLUSIDEte	imbalanced	[C15H31R-1]
+M_fucfucfucgalacglcgal14acglcgalgluside_hs_e <-> M_fucfucfucgalacglcgal14acglcgalgluside_hs_c
+C77H132N3O45R                                <-> C92H163N3O45
+
+reaction	R_FUCGALFUCGALACGLCGALGLUSIDEte	imbalanced	[C15H31R-1]
+M_fucgalfucgalacglcgalgluside_hs_e <-> M_fucgalfucgalacglcgalgluside_hs_c
+C63H109N2O36R                      <-> C78H140N2O36
+
+reaction	R_GALFUC12GAL14ACGLCGALGLUSIDEte	imbalanced	[C15H31R-1]
+M_galfuc12gal14acglcgalgluside_hs_e <-> M_galfuc12gal14acglcgalgluside_hs_c
+C57H99N2O32R                        <-> C72H130N2O32
+
+reaction	R_GBSIDEte	imbalanced	[C-15H-31R]
+M_gbside_hs_c <-> M_gbside_hs_e
+C60H110N2O23  <-> C45H79N2O23R
+
+reaction	R_GP1CALPHAte	imbalanced	[C-15H-31R]
+M_gp1calpha_hs_c <-> M_gp1calpha_hs_e
+C115H190N7O63    <-> C100H159N7O63R
+
+reaction	R_GP1Cte	imbalanced	[C-15H-31R]
+M_gp1c_hs_c   <-> M_gp1c_hs_e
+C115H190N7O63 <-> C100H159N7O63R
+
+reaction	R_GQ1BALPHAte	imbalanced	[C-15H-31R]
+M_gq1balpha_hs_c <-> M_gq1balpha_hs_e
+C104H174N6O55    <-> C89H143N6O55R
+
+reaction	R_GQ1Bte	imbalanced	[C-15H-31R]
+M_gq1b_hs_c   <-> M_gq1b_hs_e
+C104H174N6O55 <-> C89H143N6O55R
+
+reaction	R_biomass_protein	unknown	[C-44.2149844192H-1.60215155792N-12.6651600571O-22.3053881013P7.85007614468S-0.282706798867]
+0.7161898017 M_ala_L_c + 0.508866855524 M_arg_L_c + 0.395779036827 M_asn_L_c + 0.499447592068 M_asp_L_c + 0.0659645892351 M_cys_L_c + 0.461756373938 M_gln_L_c + 0.546558073654 M_glu_L_c + 0.763300283286 M_gly_c + 0.179050991501 M_his_L_c + 0.405212464589 M_ile_L_c + 0.772719546742 M_leu_L_c + 0.838682719547 M_lys_L_c + 0.216742209632 M_met_L_c + 0.367521246459 M_phe_L_c + 0.584249291785 M_pro_L_c + 0.555991501416 M_ser_L_c + 0.44290368272 M_thr_L_c + 0.0188470254958 M_trp_L_c  + 0.226161473088 M_tyr_L_c + 0.499447592068 M_val_L_c + 29.2504249292 M_atp_c       + 29.2504249292 M_h2o_c --> M_biomass_protein_c + 29.2504249292 M_adp_c       + 29.2504249292 M_pi_c + 29.2504249292 M_h_c
+0.7161898017 C3H7NO2   + 0.508866855524 C6H15N4O2 + 0.395779036827 C4H8N2O3  + 0.499447592068 C4H6NO4   + 0.0659645892351 C3H7NO2S  + 0.461756373938 C5H10N2O3 + 0.546558073654 C5H8NO4   + 0.763300283286 C2H5NO2 + 0.179050991501 C6H9N3O2  + 0.405212464589 C6H13NO2  + 0.772719546742 C6H13NO2  + 0.838682719547 C6H15N2O2 + 0.216742209632 C5H11NO2S + 0.367521246459 C9H11NO2  + 0.584249291785 C5H9NO2   + 0.555991501416 C3H7NO3   + 0.44290368272 C4H9NO3   + 0.0188470254958 C11H12N2O2 + 0.226161473088 C9H11NO3  + 0.499447592068 C5H11NO2  + 29.2504249292 C10H12N5O13P3 + 29.2504249292 H2O     --> ?                   + 29.2504249292 C10H15N5O10P2 + 29.2504249292 HO4P   + 29.2504249292 H
+
+reaction	R_biomass_DNA	unknown	[C-31.907H-45.5585N-12.1366428571O-42.3492857143P-9.77442857143]
+0.941642857143 M_datp_n      + 0.674428571429 M_dctp_n     + 0.707 M_dgtp_n      + 0.935071428571 M_dttp_n      --> M_biomass_DNA_c
+0.941642857143 C10H12N5O12P3 + 0.674428571429 C9H16N3O13P3 + 0.707 C10H16N5O13P3 + 0.935071428571 C10H13N2O14P3 --> ?
+
+reaction	R_biomass_RNA	unknown	[C-29.8363448276H-36.7955517241N-11.6049137931O-43.9988275862P-9.4292586207]
+0.925862068966 M_atp_c       + 0.673034482759 M_ctp_c      + 0.622706896552 M_gtp_c       + 0.921482758621 M_utp_c      --> M_biomass_RNA_c
+0.925862068966 C10H12N5O13P3 + 0.673034482759 C9H12N3O14P3 + 0.622706896552 C10H12N5O14P3 + 0.921482758621 C9H11N2O15P3 --> ?
+
+reaction	R_biomass_carbohydrate	unknown	[C-23.2554929577H-42.6350704225O-34.8832394366P-3.87591549296]
+3.87591549296 M_g6p_c  --> M_biomass_carbohydrate_c
+3.87591549296 C6H11O9P --> ?
+
+reaction	R_biomass_lipid	unknown	[C-119.579402061H-236.214329896N-2.58386597938O-24.6670103093P-2.91437113402]
+0.210319587629 M_chsterol_c + 0.12018556701 M_clpn_hs_c  + 0.240360824742 M_pail_hs_c + 1.59237113402 M_pchol_hs_c + 0.570865979381 M_pe_hs_c  + 0.0300412371134 M_pglyc_hs_c + 0.180268041237 M_sphmyln_hs_c + 0.0600927835052 M_ps_hs_c   --> M_biomass_lipid_c
+0.210319587629 C27H46O      + 0.12018556701 C73H142O17P2 + 0.240360824742 C41H78O13P  + 1.59237113402 C40H80NO8P   + 0.570865979381 C37H74NO8P + 0.0300412371134 C38H74O10P   + 0.180268041237 C39H80N2O6P    + 0.0600927835052 C38H74NO10P --> ?
+
+reaction	R_PMTCOAtm	imbalanced	[H-4]
+M_pmtcoa_c     --> M_pmtcoa_m
+C37H66N7O17P3S --> C37H62N7O17P3S
+
+7020	reactions balanced
+24	reactions imbalanced
+13	reactions unknown
+
+EX_glc(e):	31
+EX_fru(e):	31
+EX_ppa(e):	16.25
+EX_but(e):	21.5
+EX_hx(e):	35.25
+EX_octa(e):	49
+EX_HC02175(e):	62.75
+EX_HC02176(e):	76.5
+EX_ttdca(e):	90.25
+EX_hdca(e):	104
+EX_ocdca(e):	117.75
+EX_arach(e):	131.5
+EX_docosac_:	142.5
+EX_lgnc(e):	155.5
+EX_hexc(e):	167.5
+EX_ala_L(e):	14.75
+EX_arg_L(e):	27
+EX_asn_L(e):	14.75
+EX_asp_L(e):	14.75
+EX_cys_L(e):	17.25
+EX_gln_L(e):	22
+EX_glu_L(e):	22
+EX_gly(e):	7.875
+EX_his_L(e):	24.875
+EX_ile_L(e):	35
+EX_leu_L(e):	32.75
+EX_lys_L(e):	31.5
+EX_met_L(e):	26.625
+EX_phe_L(e):	32.25
+EX_pro_L(e):	26
+EX_ser_L(e):	13.25
+EX_thr_L(e):	18.75
+EX_trp_L(e):	38.75
+EX_tyr_L(e):	34.75
+EX_val_L(e):	28.5
+
+
+recon_2.1
+
+9204	species
+5737	with SBO term	247
+2400	with SBO term	252
+1067	with SBO term	297
+5056	variable
+681	fixed
+3467	non-reactants
+
+8089	reactions
+4148	with SBO term	176
+2591	with SBO term	185
+1350	with SBO term	397
+6740	non-source/sink
+1349	source/sink
+
+2193	genes
+
+6567	reactions balanced
+51	reactions imbalanced
+122	reactions unknown
+
+
+recon_2.03
+
+5063	species
+5063	with SBO term	-1
+5063	variable
+0	fixed
+0	non-reactants
+
+7440	reactions
+7440	with SBO term	-1
+6739	non-source/sink
+701	source/sink
+
+2191	genes
+
+6247	reactions balanced
+94	reactions imbalanced
+398	reactions unknown
+
+
+recon_2.02
+
+9798	species
+5063	with SBO term	247
+3567	with SBO term	252
+1168	with SBO term	297
+5063	variable
+0	fixed
+4735	non-reactants
+
+7440	reactions
+4266	with SBO term	176
+3174	with SBO term	185
+6739	non-source/sink
+701	source/sink
+
+2191	genes
+
+6247	reactions balanced
+94	reactions imbalanced
+398	reactions unknown
+
+
+recon_2
+
+9798	species
+5063	with SBO term	247
+3567	with SBO term	252
+1168	with SBO term	297
+5063	variable
+0	fixed
+4735	non-reactants
+
+7440	reactions
+4266	with SBO term	176
+3174	with SBO term	185
+6739	non-source/sink
+701	source/sink
+
+2191	genes
+
+6247	reactions balanced
+94	reactions imbalanced
+398	reactions unknown
+
+
+recon_1
+
+3188	species
+3188	with SBO term	-1
+2766	variable
+422	fixed
+0	non-reactants
+
+3742	reactions
+3742	with SBO term	-1
+3311	non-source/sink
+431	source/sink
+
+0	genes
+
+0	reactions balanced
+0	reactions imbalanced
+3311	reactions unknown
+
+
+quek14
+
+9348	species
+5639	with SBO term	247
+2657	with SBO term	252
+1052	with SBO term	297
+4962	variable
+677	fixed
+3709	non-reactants
+
+7327	reactions
+4783	with SBO term	176
+2544	with SBO term	185
+6627	non-source/sink
+700	source/sink
+
+2169	genes
+
+6061	reactions balanced
+211	reactions imbalanced
+355	reactions unknown

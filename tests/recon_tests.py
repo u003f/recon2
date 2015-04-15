@@ -3,8 +3,10 @@ Various tests to compare different flavours of recon 2.
 Updated: 10 Apr 15 by Kieran Smallbone
 """
 
+import itertools
 import numpy
 import os
+import re
 import scipy.sparse as sparse
 
 # http://www.gurobi.com/documentation/6.0/quickstart_mac/py_python_interface.html
@@ -19,13 +21,157 @@ NAN = numpy.nan
 
 def run_all():
     """Runs all the tests on all the models"""
-
     model_names, model_path = list_models()
-    model_names = ['recon_2.2']
     for name in model_names:
-        print '\n%s'%name
-        filename = os.path.join(model_path, name + '.xml')
-        max_fluxes(filename)
+        if name in ['recon_2.2']:
+            display_errors = True
+        else:
+            display_errors = False
+        test_model(name, model_path, display_errors)
+
+
+def test_model(name, model_path, display_errors=False):
+    """Runs all the tests on one model"""
+    print '\n\n%s'%name
+    model_filename = os.path.join(model_path, name + '.xml')
+    sbml = read_sbml(model_filename)
+    model_stats(sbml, display_errors)
+    model_balancing(sbml, display_errors)
+    if name in ['recon_2.2']:
+        max_fluxes(sbml)
+
+
+def model_stats(sbml, display_errors = False):
+    """Statistics on the number, and type, of species, reactions and genes in a model"""
+    model = sbml.getModel()
+
+    # species statistics by SBO term
+    print '\n%g\t%s'%(model.getNumSpecies(), 'species')
+    sbo_count = {}
+    for species in model.getListOfSpecies():
+        sbo = species.getSBOTerm()
+        if sbo not in sbo_count:
+            sbo_count[sbo] = 0
+        sbo_count[sbo] += 1
+        if display_errors and (sbo == -1):
+            print '%s\t%s\t%s'%('species', species.getId(), 'has no SBO term')
+    for sbo in sorted(sbo_count.keys()):
+        print '%g\t%s\t%g'%(sbo_count[sbo], 'with SBO term', sbo)
+
+    # species statistics by type
+    appears_in_reaction = []
+    for reaction in model.getListOfReactions():
+        for reactant in itertools.chain(reaction.getListOfReactants(), reaction.getListOfProducts()):
+            sID = reactant.getSpecies()
+            if sID not in appears_in_reaction:
+                appears_in_reaction.append(sID)
+    nM, nB, nE = 0, 0, 0
+    for species in model.getListOfSpecies():
+        if species.getId() not in appears_in_reaction:
+            nE += 1
+        elif species.getBoundaryCondition():
+            nB += 1
+        else:
+            nM += 1
+    print '%g\t%s'%(nM, 'variable')
+    print '%g\t%s'%(nB, 'fixed')
+    print '%g\t%s'%(nE, 'non-reactants')
+
+    # reaction statistics by SBO term
+    print '\n%g\t%s'%(model.getNumReactions(), 'reactions')
+    sbo_count = {}
+    for reaction in model.getListOfReactions():
+        sbo = reaction.getSBOTerm()
+        if sbo not in sbo_count:
+            sbo_count[sbo] = 0
+        sbo_count[sbo] += 1
+        if display_errors and (sbo == -1):
+            print '%s\t%s\t%s'%('reaction', reaction.getId(), 'has no SBO term')
+    for sbo in sorted(sbo_count.keys()):
+        print '%g\t%s\t%g'%(sbo_count[sbo], 'with SBO term', sbo)
+
+    # reaction statistics by type
+    nR, nB = 0, 0
+    rID_list = get_source_reactions(sbml)
+    print '%g\t%s'%(model.getNumReactions() - len(rID_list), 'non-source/sink')
+    print '%g\t%s'%(len(rID_list), 'source/sink')
+
+    # number of genes
+    gene_list = get_list_of_genes(sbml)
+    print '\n%g\t%s'%(len(gene_list), 'genes')
+
+
+def get_list_of_genes(sbml):
+    """
+    Return list of all genes in model
+    """
+    model = sbml.getModel()
+    gene_list = []
+    for reaction in model.getListOfReactions():
+        rID = reaction.getId()
+        gene_association = get_notes_field(rID, 'GENE_ASSOCIATION', sbml)
+        for gene in re.findall(r'\b\S+\b', gene_association):
+            if (gene not in ['and', 'or', 'AND', 'OR']) and (gene not in gene_list):
+                gene_list.append(gene)
+    return sorted(gene_list)
+
+
+def model_balancing(sbml, display_errors = False):
+    """
+    Checks elemental balancing for all reactions in model
+    """
+    model = sbml.getModel()
+    rID_list = get_source_reactions(sbml) # list of source/sink reactions
+    num_balanced, num_imbalanced, num_unknown = 0, 0, 0
+
+    for reaction in model.getListOfReactions():
+        rID = reaction.getId()
+        if rID not in rID_list:
+            formula, unknown = element_balance_reaction(rID, sbml)
+            if unknown:
+                num_unknown += 1
+                if display_errors:
+                    print '\n%s\t%s\t%s\t[%s]'%('reaction', rID, 'unknown', formula)
+            elif formula:
+                num_imbalanced += 1
+                if display_errors:
+                    print '\n%s\t%s\t%s\t[%s]'%('reaction', rID, 'imbalanced', formula)
+            else:
+                num_balanced += 1
+            if display_errors and (unknown or formula):
+                print display_reaction_and_formula(rID, sbml)
+
+    print ''
+    print '%g\t%s'%(num_balanced, 'reactions balanced')
+    print '%g\t%s'%(num_imbalanced, 'reactions imbalanced')
+    print '%g\t%s'%(num_unknown, 'reactions unknown')
+
+
+def get_source_reactions(sbml):
+    """Determine source and sink reactions"""
+    model = sbml.getModel()
+
+    rID_list = []
+
+    # strip out format used in recon 2.1
+    species = model.getSpecies('M_carbon_e')
+    if species:
+        species.setBoundaryCondition(True)
+
+    for reaction in model.getListOfReactions():
+        nS, nP = 0, 0
+        for reactant in reaction.getListOfReactants():
+            sID = reactant.getSpecies()
+            if not model.getSpecies(sID).getBoundaryCondition():
+                nS += 1
+        for product in reaction.getListOfProducts():
+            sID = product.getSpecies()
+            if not model.getSpecies(sID).getBoundaryCondition():
+                nP += 1
+        if (nS == 0) or (nP == 0):
+            rID_list.append(reaction.getId())
+
+    return rID_list
 
 
 def list_models():
@@ -48,7 +194,7 @@ def list_models():
     return model_names, model_path
 
 
-def max_fluxes(model_filename):
+def max_fluxes(sbml):
     """
     Written to mimic neilswainston matlab function maxFluxes
     """
@@ -67,7 +213,9 @@ def max_fluxes(model_filename):
         'EX_pi(e)'
         ]
     objective = 'DM_atp_c_'
-    for normoxic in [True, False]:
+    print ''
+#     for normoxic in [True, False]:
+    for normoxic in [True,]:
         for carbon_source in [
                 # sugars
                 'EX_glc(e)',
@@ -108,15 +256,14 @@ def max_fluxes(model_filename):
                 'EX_tyr_L(e)',
                 'EX_val_L(e)',
                 ]:
-            f_opt = max_flux(model_filename, carbon_source, objective, normoxic, media)
+            f_opt = max_flux(sbml, carbon_source, objective, normoxic, media)
             print '%s:\t%g'%(carbon_source, f_opt)
 
 
-def max_flux(model_filename, carbon_source, objective, normoxic, media):
+def max_flux(sbml, carbon_source, objective, normoxic, media):
     """
     Written to mimic neilswainston matlab function maxFlux
     """
-    sbml = read_sbml(model_filename)
     set_infinite_bounds(sbml)
     # block import reactions
     block_all_imports(sbml)
@@ -153,12 +300,8 @@ def block_all_imports(sbml):
     """
     model = sbml.getModel()
 
-    # strip out format used in recon 2.1
-    species = model.getSpecies('M_carbon_e')
-    if species:
-        species.setBoundaryCondition(True)
-
-    for reaction in model.getListOfReactions():
+    for rID in get_source_reactions(sbml):
+        reaction = model.getReaction(rID)
         nR, nP = 0, 0
         for reactant in reaction.getListOfReactants():
             sID = reactant.getSpecies()
@@ -444,7 +587,9 @@ def set_import_bounds(sbml, rxn_name_list, value):
 
 
 def set_infinite_bounds(sbml):
-    """Set default bounds to INF, rather than 1000 (say)"""
+    """
+    Set default bounds to INF, rather than 1000 (say)
+    """
     model = sbml.getModel()
     for reaction in model.getListOfReactions():
         kineticLaw = reaction.getKineticLaw()
@@ -456,6 +601,199 @@ def set_infinite_bounds(sbml):
             param.setValue(INF)
 
 
+def formula_to_map(formula):
+    """
+    Tranform a formula string 'C6H12O6' into a map dictionary {'C':6, 'H':12, 'O':6}
+    """
+
+    formula_map = {}
+    # do not parse bracketing
+    if ('(' in formula) or (')' in formula):
+        return formula_map
+    # replace FULLR notation with R
+    for R in ['FULLR3', 'FULLR2', 'FULLR']:
+        formula = formula.replace(R, 'R')
+    m = re.findall('([A-Z][a-z]*)([\-]?[\d]*[\.]?[\d]*)', formula)
+    for duple in m:
+        X = duple[0]
+        n = duple[1]
+        if not n:
+            n = 1.0
+        else:
+            n = float(n)
+        if X not in formula_map:
+            formula_map[X] = 0.0
+        formula_map[X] = formula_map[X] + n
+    # do not parse n
+    if 'n' in formula_map:
+        formula_map = {}
+
+    return formula_map
+
+
+def map_to_formula(formula_map):
+    """
+    Tranform a map dictionary {'C':6, 'H':12, 'O':6} into a formula string 'C6H12O6'
+    """
+
+    formula = ''
+    for X in formula_map.keys():
+        if formula_map[X] == 0:
+            del formula_map[X]
+        elif formula_map[X] == int(formula_map[X]):
+            formula_map[X] = int(formula_map[X])
+    # force some elements to appear first
+    for X in ['C', 'H']:
+        if X in formula_map:
+            n = formula_map.pop(X)
+            formula = formula + X
+            if n != 1:
+                formula = formula + str(n)
+    for X in sorted(formula_map.keys()):
+        n = formula_map[X]
+        formula = formula + X
+        if n != 1:
+            formula = formula + str(n)
+
+    return formula
+
+
+def element_balance_reaction(rID, sbml):
+    """
+    Determine the overall elemental imbalance of a reaction
+    """
+    model = sbml.getModel()
+    reaction = sbml.getModel().getReaction(rID)
+
+    unknown = False
+    overall_formula = ''
+    for reactant in reaction.getListOfReactants():
+        sID = reactant.getSpecies()
+        formula = get_formula(sID, sbml)
+        stoich = reactant.getStoichiometry()
+        if not formula_to_map(formula):
+            unknown = True
+        overall_formula = add_formulae(overall_formula, formula, -stoich)
+    for reactant in reaction.getListOfProducts():
+        sID = reactant.getSpecies()
+        formula = get_formula(sID, sbml)
+        stoich = reactant.getStoichiometry()
+        if not formula_to_map(formula):
+            unknown = True
+        overall_formula = add_formulae(overall_formula, formula, stoich)
+
+    return overall_formula, unknown
+
+
+def add_formulae(formula, formula_new, stoich = 1.0):
+    """
+    Calculate formula + stoich * formula_new
+    e.g. formula = C6H12O6, formula_new = H2O, stoich = -6 -> C6
+    """
+
+    formula_map = formula_to_map(formula)
+    formula_map_new = formula_to_map(formula_new)
+
+    for X in formula_map_new:
+        if X not in formula_map:
+            formula_map[X] = 0
+        formula_map[X] = formula_map[X] + stoich * formula_map_new[X]
+    return map_to_formula(formula_map)
+
+
+def get_formula(sID, sbml):
+    """
+    Get the formula of species with ID sID
+    """
+    return get_notes_field(sID, 'FORMULA', sbml)
+
+
+def get_notes_field(eID, name, sbml):
+    """
+    """
+    element = sbml.getModel().getElementBySId(eID)
+    try:
+        notes = element.getNotesString()
+        f = re.search(name + ':([^<]+)', notes)
+        f = f.group(1)
+        f = f.strip()
+    except:
+         f = ''
+    return f
+
+
+def display_reaction_and_formula(rID, sbml):
+    """
+    Display reaction, with formulae below each reactant.
+    """
+    model = sbml.getModel()
+    reaction = model.getReaction(rID)
+
+    txt, txt_formula = '', ''
+    txt_formula = ''
+
+    for index, reactant in enumerate(reaction.getListOfReactants()):
+        if index > 0:
+            txt += '+ '
+            txt_formula += '+ '
+        stoich = reactant.getStoichiometry()
+        if stoich == int(stoich):
+            stoich = int(stoich)
+        if stoich != 1:
+            txt += str(stoich) + ' '
+            txt_formula += str(stoich) + ' '
+        sID = reactant.getSpecies()
+        txt += sID
+        formula = get_formula(sID, sbml)
+        if not formula:
+            formula = '?'
+        txt_formula += formula
+        len_txt = len(txt)
+        len_txt_formula = len(txt_formula)
+        if len_txt > len_txt_formula:
+            txt_formula = txt_formula.ljust(len_txt)
+        elif len_txt < len_txt_formula:
+            txt = txt.ljust(len_txt_formula)
+        txt += ' '
+        txt_formula += ' '
+
+    if reaction.getReversible():
+        txt += '<-> '
+        txt_formula += '<-> '
+    else:
+        txt += '--> '
+        txt_formula += '--> '
+
+    for index, reactant in enumerate(reaction.getListOfProducts()):
+        if index > 0:
+            txt += '+ '
+            txt_formula += '+ '
+        stoich = reactant.getStoichiometry()
+        if stoich == int(stoich):
+            stoich = int(stoich)
+        if stoich != 1:
+            txt += str(stoich) + ' '
+            txt_formula += str(stoich) + ' '
+        sID = reactant.getSpecies()
+        txt += sID
+        formula = get_formula(sID, sbml)
+        if not formula:
+            formula = '?'
+        txt_formula += formula
+        len_txt = len(txt)
+        len_txt_formula = len(txt_formula)
+        if len_txt > len_txt_formula:
+            txt_formula = txt_formula.ljust(len_txt)
+        elif len_txt < len_txt_formula:
+            txt = txt.ljust(len_txt_formula)
+        if index < reaction.getNumProducts() - 1:
+            txt += ' '
+            txt_formula += ' '
+
+    return txt + '\n' + txt_formula
+
+
 if __name__ == '__main__':
     run_all()
+
     print 'DONE!'
