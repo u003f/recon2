@@ -115,7 +115,7 @@ as described in the recon 2 paper, supplementary note 2
 * check HGNC associations
 
 [2.1.35]
-* add missing cartinine shuttles
+* delete incorrect acyl-CoA transport and replace with missing cartinine shuttles
 
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
