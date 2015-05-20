@@ -117,5 +117,9 @@ as described in the recon 2 paper, supplementary note 2
 [2.1.35]
 * delete incorrect acyl-CoA transport and replace with missing cartinine shuttles
 
+[2.1.36]
+* redefine gene associations as per recon_2.04 (http://humanmetabolism.org/?page_id=75)
+* re-remove splice variants, remap genes to HGNC [see gene_associations_2_1_36.txt] and re-add enzymes as modifiers
+* made reactions with LB < 0 reversible
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
