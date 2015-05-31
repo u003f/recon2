@@ -23,7 +23,8 @@ def run_all():
     """Runs all the tests on all the models"""
     model_names, model_path = list_models()
     for name in model_names:
-        if name in ['recon_2.2']:
+#         if name in ['recon_2.2']:
+        if name[:9] == 'recon_2.2':
             display_errors = True
         else:
             display_errors = False
@@ -37,7 +38,8 @@ def test_model(name, model_path, display_errors=False):
     sbml = read_sbml(model_filename)
     model_stats(sbml, display_errors)
     model_balancing(sbml, display_errors)
-    if name in ['recon_2.2']:
+#     if name in ['recon_2.2']:
+    if name[:9] == 'recon_2.2':
         max_fluxes(sbml)
 
 

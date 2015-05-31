@@ -1,0 +1,233 @@
+output from recon_tests.py
+
+
+recon_2.2
+
+6175	species
+6175	with SBO term	247
+5357	variable
+818	fixed
+0	non-reactants
+
+7913	reactions
+4152	with SBO term	176
+2915	with SBO term	185
+846	with SBO term	397
+7071	non-source/sink
+842	source/sink
+
+2011	genes
+
+reaction	R_biomass_protein	unknown	[C-44.2149844192H-89.3534263458N-12.6651600571O-22.3053881013P7.85007614468S-0.282706798867]
+0.7161898017 M_ala_L_c + 0.508866855524 M_arg_L_c + 0.395779036827 M_asn_L_c + 0.499447592068 M_asp_L_c + 0.0659645892351 M_cys_L_c + 0.461756373938 M_gln_L_c + 0.546558073654 M_glu_L_c + 0.763300283286 M_gly_c + 0.179050991501 M_his_L_c + 0.405212464589 M_ile_L_c + 0.772719546742 M_leu_L_c + 0.838682719547 M_lys_L_c + 0.216742209632 M_met_L_c + 0.367521246459 M_phe_L_c + 0.584249291785 M_pro_L_c + 0.555991501416 M_ser_L_c + 0.44290368272 M_thr_L_c + 0.0188470254958 M_trp_L_c  + 0.226161473088 M_tyr_L_c + 0.499447592068 M_val_L_c + 29.2504249292 M_atp_c       + 29.2504249292 M_h2o_c --> M_biomass_protein_c + 29.2504249292 M_adp_c       + 29.2504249292 M_pi_c + 29.2504249292 M_h_c
+0.7161898017 C3H7NO2   + 0.508866855524 C6H15N4O2 + 0.395779036827 C4H8N2O3  + 0.499447592068 C4H6NO4   + 0.0659645892351 C3H7NO2S  + 0.461756373938 C5H10N2O3 + 0.546558073654 C5H8NO4   + 0.763300283286 C2H5NO2 + 0.179050991501 C6H9N3O2  + 0.405212464589 C6H13NO2  + 0.772719546742 C6H13NO2  + 0.838682719547 C6H15N2O2 + 0.216742209632 C5H11NO2S + 0.367521246459 C9H11NO2  + 0.584249291785 C5H9NO2   + 0.555991501416 C3H7NO3   + 0.44290368272 C4H9NO3   + 0.0188470254958 C11H12N2O2 + 0.226161473088 C9H11NO3  + 0.499447592068 C5H11NO2  + 29.2504249292 C10H12N5O13P3 + 29.2504249292 H2O     --> ?                   + 29.2504249292 C10H12N5O10P2 + 29.2504249292 HO4P   + 29.2504249292 H
+
+reaction	R_biomass_DNA	unknown	[C-31.907H-45.5585N-12.1366428571O-42.3492857143P-9.77442857143]
+0.941642857143 M_datp_n      + 0.674428571429 M_dctp_n     + 0.707 M_dgtp_n      + 0.935071428571 M_dttp_n      --> M_biomass_DNA_c
+0.941642857143 C10H12N5O12P3 + 0.674428571429 C9H16N3O13P3 + 0.707 C10H16N5O13P3 + 0.935071428571 C10H13N2O14P3 --> ?
+
+reaction	R_biomass_RNA	unknown	[C-29.8363448276H-36.7955517241N-11.6049137931O-43.9988275862P-9.4292586207]
+0.925862068966 M_atp_c       + 0.673034482759 M_ctp_c      + 0.622706896552 M_gtp_c       + 0.921482758621 M_utp_c      --> M_biomass_RNA_c
+0.925862068966 C10H12N5O13P3 + 0.673034482759 C9H12N3O14P3 + 0.622706896552 C10H12N5O14P3 + 0.921482758621 C9H11N2O15P3 --> ?
+
+reaction	R_biomass_carbohydrate	unknown	[C-23.2554929577H-42.6350704225O-34.8832394366P-3.87591549296]
+3.87591549296 M_g6p_c  --> M_biomass_carbohydrate_c
+3.87591549296 C6H11O9P --> ?
+
+reaction	R_biomass_lipid	unknown	[C-119.579402061H-236.214329896N-2.58386597938O-24.6670103093P-2.91437113402]
+0.210319587629 M_chsterol_c + 0.12018556701 M_clpn_hs_c  + 0.240360824742 M_pail_hs_c + 1.59237113402 M_pchol_hs_c + 0.570865979381 M_pe_hs_c  + 0.0300412371134 M_pglyc_hs_c + 0.180268041237 M_sphmyln_hs_c + 0.0600927835052 M_ps_hs_c   --> M_biomass_lipid_c
+0.210319587629 C27H46O      + 0.12018556701 C73H142O17P2 + 0.240360824742 C41H78O13P  + 1.59237113402 C40H80NO8P   + 0.570865979381 C37H74NO8P + 0.0300412371134 C38H74O10P   + 0.180268041237 C39H80N2O6P    + 0.0600927835052 C38H74NO10P --> ?
+
+7066	reactions balanced
+0	reactions unbalanced
+5	reactions unknown
+
+EX_glc(e):	31
+EX_fru(e):	31
+EX_ppa(e):	16.25
+EX_but(e):	21.5
+EX_hx(e):	33.5
+EX_octa(e):	49
+EX_HC02175(e):	57.4167
+EX_HC02176(e):	73.8333
+EX_ttdca(e):	90.25
+EX_hdca(e):	104
+EX_ocdca(e):	117.75
+EX_arach(e):	131.5
+EX_docosac_:	142.5
+EX_lgnc(e):	155.5
+EX_hexc(e):	167.5
+EX_ala_L(e):	14.75
+EX_arg_L(e):	27
+EX_asn_L(e):	14.75
+EX_asp_L(e):	14.75
+EX_cys_L(e):	17.25
+EX_gln_L(e):	22
+EX_glu_L(e):	22
+EX_gly(e):	7.875
+EX_his_L(e):	24.875
+EX_ile_L(e):	35
+EX_leu_L(e):	32.75
+EX_lys_L(e):	31.5
+EX_met_L(e):	26.625
+EX_phe_L(e):	32.25
+EX_pro_L(e):	26
+EX_ser_L(e):	13.25
+EX_thr_L(e):	18.75
+EX_trp_L(e):	38.75
+EX_tyr_L(e):	34.75
+EX_val_L(e):	28.5
+
+
+recon_2.1
+
+9204	species
+5737	with SBO term	247
+2400	with SBO term	252
+1067	with SBO term	297
+5056	variable
+681	fixed
+3467	non-reactants
+
+8089	reactions
+4148	with SBO term	176
+2591	with SBO term	185
+1350	with SBO term	397
+6740	non-source/sink
+1349	source/sink
+
+2193	genes
+
+6567	reactions balanced
+51	reactions unbalanced
+122	reactions unknown
+
+
+recon_2.04
+
+5063	species
+5063	with SBO term	-1
+5063	variable
+0	fixed
+0	non-reactants
+
+7440	reactions
+7440	with SBO term	-1
+6739	non-source/sink
+701	source/sink
+
+2140	genes
+
+6247	reactions balanced
+94	reactions unbalanced
+398	reactions unknown
+
+
+recon_2.03
+
+5063	species
+5063	with SBO term	-1
+5063	variable
+0	fixed
+0	non-reactants
+
+7440	reactions
+7440	with SBO term	-1
+6739	non-source/sink
+701	source/sink
+
+2191	genes
+
+6247	reactions balanced
+94	reactions unbalanced
+398	reactions unknown
+
+
+recon_2.02
+
+9798	species
+5063	with SBO term	247
+3567	with SBO term	252
+1168	with SBO term	297
+5063	variable
+0	fixed
+4735	non-reactants
+
+7440	reactions
+4266	with SBO term	176
+3174	with SBO term	185
+6739	non-source/sink
+701	source/sink
+
+2191	genes
+
+6247	reactions balanced
+94	reactions unbalanced
+398	reactions unknown
+
+
+recon_2
+
+9798	species
+5063	with SBO term	247
+3567	with SBO term	252
+1168	with SBO term	297
+5063	variable
+0	fixed
+4735	non-reactants
+
+7440	reactions
+4266	with SBO term	176
+3174	with SBO term	185
+6739	non-source/sink
+701	source/sink
+
+2191	genes
+
+6247	reactions balanced
+94	reactions unbalanced
+398	reactions unknown
+
+
+recon_1
+
+3188	species
+3188	with SBO term	-1
+2766	variable
+422	fixed
+0	non-reactants
+
+3742	reactions
+3742	with SBO term	-1
+3311	non-source/sink
+431	source/sink
+
+0	genes
+
+0	reactions balanced
+0	reactions unbalanced
+3311	reactions unknown
+
+
+quek14
+
+9348	species
+5639	with SBO term	247
+2657	with SBO term	252
+1052	with SBO term	297
+4962	variable
+677	fixed
+3709	non-reactants
+
+7327	reactions
+4783	with SBO term	176
+2544	with SBO term	185
+6627	non-source/sink
+700	source/sink
+
+2169	genes
+
+6061	reactions balanced
+211	reactions unbalanced
+355	reactions unknown
+
