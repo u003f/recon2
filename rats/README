@@ -4,7 +4,7 @@ The script human_to_rat.py performs the transformation. The mapping ensembl_hgnc
 
 2-Jun-15:
 
-Enzyme-catalysed human reactions that have no rat orthologue (for any isoenzyme) are removed. This happens in 85 cases, below. The resultant model cannot grow.
+Enzyme-catalysed human reactions that have no rat orthologue (for any isoenzyme) are removed. This happens in 84 cases, below. Uncatalysed (spontaneous or modelling) reactions are always kept. The resultant model cannot grow.
 
 R_ARGSL	[argininosuccinate lyase]
 746
@@ -33,16 +33,11 @@ R_GBGT1	[globoside alpha-1,3-N-acetylgalactosaminyltransferase 1]
 R_GGT5r	[Gamma-glutamyltransferase 5]
 4260
 
-HGNC:4292	not found
-HGNC:4292	not found
 R_GND	[phosphogluconate dehydrogenase]
 8891
 
 R_GNDer	[phosphogluconate dehydrogenase, endoplasmic reticulum]
 8891
-
-R_HPCLx	[2-hydroxyphytanoyl-CoA lyase]
-5324
 
 R_HSD11B1r	[11-beta-hydroxysteroid dehydrogenase type 1]
 5208
