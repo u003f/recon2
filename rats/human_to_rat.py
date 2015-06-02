@@ -72,11 +72,10 @@ def make_rat():
                     ga_rat = re.sub(r'\b' + hgnc + r'\b', rat, ga_rat)
             ga_rat = to_dnf(ga_rat)
             set_notes_field(rID, 'GENE_ASSOCIATION', ga_rat, sbml)
-            if not ga_rat:
-                to_remove.append(rID)
-                print '%s\t[%s]\n%s\n'%(rID, reaction.getName(), ga_human)
-
-    print '%s of %s reactions removed\n'%(len(to_remove), model.getNumReactions())
+#             if not ga_rat:
+#                 to_remove.append(rID)
+#                 print '%s\t[%s]\n%s\n'%(rID, reaction.getName(), ga_human)
+#     print '%s of %s reactions removed\n'%(len(to_remove), model.getNumReactions())
 
     for rID in to_remove:
         model.removeReaction(rID)
