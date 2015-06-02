@@ -1,0 +1,264 @@
+This directory contains the reconstruction of rat metabolism (rambo.xml), derived from recon 2.2.
+
+The script human_to_rat.py performs the transformation. The mapping ensembl_hgnc_to_rat.txt (as calculated in Ensembl Genes 80, GRCh38.p2) is used to map from the HGNC identifiers in the human reconstruction, to their Ensembl rat orthologues.
+
+2-Jun-15:
+
+Enzyme-catalysed human reactions that have no rat orthologue (for any isoenzyme) are removed. This happens in 85 cases, below. The resultant model cannot grow.
+
+R_ARGSL	[argininosuccinate lyase]
+746
+
+R_DCT	[Dopachrome tautomerase]
+2709
+
+R_FUT31g	[fucosyltransferase 3 (galactoside 3(4)-L-fucosyltransferase, Lewis blood group included) 1]
+4014
+
+R_FUT32g	[fucosyltransferase 3 (galactoside 3(4)-L-fucosyltransferase, Lewis blood group included) 1]
+4014
+
+R_FUT33g	[fucosyltransferase 3 (galactoside 3(4)-L-fucosyltransferase, Lewis blood group included) 1]
+4014
+
+R_FUT34g	[fucosyltransferase 3 (galactoside 3(4)-L-fucosyltransferase, Lewis blood group included) 1]
+4014
+
+R_FUT35g	[fucosyltransferase 3 (galactoside 3(4)-L-fucosyltransferase, Lewis blood group included) 1]
+4014
+
+R_GBGT1	[globoside alpha-1,3-N-acetylgalactosaminyltransferase 1]
+20460
+
+R_GGT5r	[Gamma-glutamyltransferase 5]
+4260
+
+HGNC:4292	not found
+HGNC:4292	not found
+R_GND	[phosphogluconate dehydrogenase]
+8891
+
+R_GNDer	[phosphogluconate dehydrogenase, endoplasmic reticulum]
+8891
+
+R_HPCLx	[2-hydroxyphytanoyl-CoA lyase]
+5324
+
+R_HSD11B1r	[11-beta-hydroxysteroid dehydrogenase type 1]
+5208
+
+R_LNS14DM	[cytochrome P450 lanosterol 14-alpha-demethylase (NADP)]
+2648
+
+R_NDPK10m	[nucleoside-diphosphate kinase (ATP:dIDP), mitochondrial]
+7852
+
+R_NDPK10n	[nucleoside-diphosphate kinase (ATP:dIDP), nuclear]
+7849 and 7850
+
+R_NDPK1n	[nucleoside-diphosphate kinase (ATP:GDP), nuclear]
+7849 and 7850
+
+R_NDPK2m	[nucleoside-diphosphate kinase (ATP:UDP), mitochondrial]
+7852
+
+R_NDPK2n	[nucleoside-diphosphate kinase (ATP:UDP), nuclear]
+7849 and 7850
+
+R_NDPK3n	[nucleoside-diphosphate kinase (ATP:CDP),nuclear]
+7849 and 7850
+
+R_NDPK4m	[nucleoside-diphosphate kinase (ATP:dTDP), mitochondrial]
+7852
+
+R_NDPK4n	[nucleoside-diphosphate kinase (ATP:dTDP), nuclear]
+7849 and 7850
+
+R_NDPK5n	[nucleoside-diphosphate kinase (ATP:dGDP), nuclear]
+7849 and 7850
+
+R_NDPK6n	[nucleoside-diphosphate kinase (ATP:dUDP), nuclear]
+7849 and 7850
+
+R_NDPK7m	[nucleoside-diphosphate kinase (ATP:dCDP), mitochondrial]
+7852
+
+R_NDPK7n	[nucleoside-diphosphate kinase (ATP:dCDP), nuclear]
+7849 and 7850
+
+R_NDPK8n	[nucleoside-diphosphate kinase (ATP:dADP), nuclear]
+7849 and 7850
+
+R_NDPK9m	[nucleoside-diphosphate kinase (ATP:IDP), mitochondrial]
+7852
+
+R_NDPK9n	[nucleoside-diphosphate kinase (ATP:IDP), nuclear]
+7849 and 7850
+
+R_P4503A43r	[cytochrome p450 P450 3A43]
+17450
+
+R_P4504F81r	[cytochrome p450 4F8]
+2648
+
+R_PNTEH	[Hydrolase Class ( RXN R02973)]
+12705 and 12706 and 16431
+
+R_RAI3	[13-cis-retinoic acid isomerase]
+4632
+
+R_SCP2x	[peroxisomal thiolase 2]
+10606
+
+R_SCPx	[peroxisomal thiolase 2]
+10606
+
+R_UGT1A10r	[UDP-glucuronosyltransferase 1-10 precursor, microsomal]
+12540
+
+R_UGT1A1r	[UDP-glucuronosyltransferase 1-10 precursor, microsomal]
+12531 or 12540
+
+R_UGT1A5r	[UDP-glucuronosyltransferase 1-10 precursor, microsomal]
+12531 or 12540
+
+R_UGT1A6r	[UDP-glucuronosyltransferase 1-10 precursor, microsomal]
+12531 or 12540
+
+R_UGT1A7r	[UDP-glucuronosyltransferase 1-10 precursor, microsomal]
+12531 or 12540
+
+R_r0539	[Cysteamine:oxygen oxidoreductase Taurine and hypotaurine metabolism EC:1.13.11.19]
+23506
+
+R_RE0453M	[RE0453]
+7852
+
+R_RE1836M	[RE1836]
+10606
+
+R_RE1836X	[RE1836]
+10606
+
+R_RE2993X	[RE2993]
+2754
+
+R_RE2996X	[RE2996]
+2754
+
+R_RE3581X	[RE3581]
+2754
+
+R_FAOXC102C101x	[fatty acid beta oxidation(C10:2-->C10:1)x]
+2754
+
+R_FAOXC103C102x	[fatty acid beta oxidation(C10:3-->C10:2)x]
+2754
+
+R_FAOXC164C163x	[fatty acid beta oxidation(C16:4-->C16:3)x]
+2754
+
+R_FAOXC165C164x	[fatty acid beta oxidation(C16:5-->C16:4)x]
+2754
+
+R_FAOXC226C225x	[fatty acid beta oxidation(C22:6-->C22:5)x]
+2754
+
+R_GLYPROPRO1c	[hydrolysis of Prolylglycine in the small intestine for cellular uptake]
+8840
+
+R_PROGLYPRO1c	[hydrolysis of glycylproline in the small intestine for cellular uptake]
+8840
+
+R_BIDGLCURr	[bilirubin di-glucuronide production]
+12540
+
+R_GNDc	[phosphogluconate dehydrogenase]
+8891
+
+R_ACHVESSEC	[Acetylcholine secretion via secretory vesicle (ATP driven)]
+10936
+
+R_ATPS4m	[ATP synthase (four protons for one ATP)]
+(14247 and 8016 and 823 and 830 and 833 and 837 and 838 and 840 and 841 and 845 and 846 and 847 and 848) or (14247 and 8016 and 823 and 830 and 833 and 837 and 838 and 840 and 843 and 845 and 846 and 847 and 848)
+
+R_COAtm	[CoA transporter]
+10986
+
+R_INSTt4	[inositol transport via sodium symport]
+11038
+
+R_NADH2_u10m	[NADH dehydrogenase, mitochondrial]
+(17194 and 20371 and 20372 and 23987 and 30242 and 7455 and 7456 and 7458 and 7459 and 7460 and 7461 and 7462 and 7683 and 7684 and 7685 and 7686 and 7687 and 7688 and 7690 and 7691 and 7692 and 7693 and 7694 and 7695 and 7696 and 7697 and 7698 and 7699 and 7700 and 7701 and 7702 and 7703 and 7704 and 7705 and 7706 and 7707 and 7708 and 7710 and 7711 and 7712 and 7713 and 7714 and 7715 and 7716 and 7717 and 7719) or (17194 and 20371 and 23987 and 30242 and 7455 and 7456 and 7458 and 7459 and 7460 and 7461 and 7462 and 7683 and 7684 and 7685 and 7686 and 7687 and 7688 and 7690 and 7691 and 7692 and 7693 and 7694 and 7695 and 7696 and 7697 and 7698 and 7699 and 7700 and 7701 and 7702 and 7703 and 7704 and 7705 and 7706 and 7707 and 7708 and 7710 and 7711 and 7712 and 7713 and 7714 and 7715 and 7716 and 7717 and 7719)
+
+R_SCP21x	[Sterol carrier protein 2]
+10606
+
+R_SCP22x	[Sterol carrier protein 2]
+10606
+
+R_r0801	[Mitochondrial Carrier (MC) TCDB:2.A.29.21.1]
+10992
+
+R_CYOOm3	[cytochrome c oxidase, mitochondrial Complex IV]
+16232 and 2265 and 2267 and 2269 and 2277 and 2279 and 2280 and 2285 and 2287 and 2288 and 2289 and 2291 and 2292 and 2294 and 24380 and 24381 and 24382 and 7419 and 7421 and 7422
+
+R_DHEASABCCte	[DHEA transport by ABCA11]
+14639
+
+R_ESTRGLCABCCte	[17beta-estradiol 3-glucosiduronic acid transport by ABCA11]
+14639
+
+R_ESTROSABCCte	[estrone-sulphate transport by ABCA11]
+14639
+
+R_2HATVACIDGLUChr	[glucuronidation of 2-hydroxy-atorvastatin-acid in hepatocytes]
+12535 or 12536
+
+R_2HATVLACGLUChr	[glucuronidation of 2-hydroxy-atorvastatin-lactone in hepatocytes]
+12535 or 12536
+
+R_6MELVACtbc	[release of 6''-exomethylene-lovastatin-acid form into bile]
+40
+
+R_ACMPtu	[efflux of acetaminophen by P-gp from the enterocytes into lumen]
+40
+
+R_ATVACIDtu	[efflux of atorvastatin acid by P-gp from the enterocytes into lumen]
+40
+
+R_ATVETHGLUChc	[glucuronidation of atorvastatin to atorvastatin ether glucuronide (G1) in hepatocytes]
+12535 or 12536 or 12541
+
+R_ATVLACtu	[efflux of atorvastatin lactone by P-gp from the enterocytes into lumen]
+40
+
+R_CSAtu	[efflux of cyclosporine by P-gp from the enterocytes into lumen]
+40
+
+R_ISOLVSTtbc	[release of 3''-hydroxy-iso-delta-4'',5''-hydroxy acid form of lovastatin into bile]
+40
+
+R_LSTN1GLUChr	[formation of losartan-N1-glucuronide in hepatocytes]
+12531
+
+R_LSTNtu	[efflux of losartan by P-gp from the enterocytes into lumen]
+40
+
+R_LVSTACIDtu	[efflux of lovastatin acid by P-gp from the enterocytes into lumen]
+40
+
+R_LVSTPGPtu	[efflux of lovastatin lactone by P-gp from the enterocytes into lumen]
+40
+
+R_MDZtu	[efflux of midazolam by P-gp from the enterocytes into lumen]
+40
+
+R_SMVACIDATPteb	[efflux of simvastatin dihydroxy acid form into bile]
+40
+
+R_SMVtu	[efflux of simvastatin by P-gp from the enterocytes into lumen]
+40
+
+R_TACRtu	[efflux of tacrolimus into intestinal lumen by P-gp]
+40
