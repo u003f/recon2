@@ -3,20 +3,19 @@ output from recon_tests.py
 
 recon_2.2
 
-6175	species
-6175	with SBO term	247
+6074	species
+6074	with SBO term	247
 5357	variable
-818	fixed
+717	fixed
 0	non-reactants
 
-7913	reactions
-4152	with SBO term	176
-2915	with SBO term	185
-846	with SBO term	397
+7812	reactions
+4158	with SBO term	176
+3654	with SBO term	185
 7071	non-source/sink
-842	source/sink
+741	source/sink
 
-2007	genes
+1715	genes
 
 reaction	R_biomass_protein	unknown	[C-44.2149844192H-89.3534263458N-12.6651600571O-22.3053881013P7.85007614468S-0.282706798867]
 0.7161898017 M_ala_L_c + 0.508866855524 M_arg_L_c + 0.395779036827 M_asn_L_c + 0.499447592068 M_asp_L_c + 0.0659645892351 M_cys_L_c + 0.461756373938 M_gln_L_c + 0.546558073654 M_glu_L_c + 0.763300283286 M_gly_c + 0.179050991501 M_his_L_c + 0.405212464589 M_ile_L_c + 0.772719546742 M_leu_L_c + 0.838682719547 M_lys_L_c + 0.216742209632 M_met_L_c + 0.367521246459 M_phe_L_c + 0.584249291785 M_pro_L_c + 0.555991501416 M_ser_L_c + 0.44290368272 M_thr_L_c + 0.0188470254958 M_trp_L_c  + 0.226161473088 M_tyr_L_c + 0.499447592068 M_val_L_c + 29.2504249292 M_atp_c       + 29.2504249292 M_h2o_c --> M_biomass_protein_c + 29.2504249292 M_adp_c       + 29.2504249292 M_pi_c + 29.2504249292 M_h_c

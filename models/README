@@ -128,5 +128,8 @@ as described in the recon 2 paper, supplementary note 2
 [2.2.02]
 * removed some pseudogenes
 
+[2.2.03]
+* re-redefine gene associations as per recon_2.04 (some HGNC mappings were missing)
+* redefine further gene associations from Nathan Lewis group
 
 == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == ** == **
