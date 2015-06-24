@@ -59,6 +59,7 @@ def make_rat():
         rID = reaction.getId()
         ga_human = get_notes_field(rID, 'GENE_ASSOCIATION', sbml)
         if ga_human:
+            ga_human = ga_human.replace('HGNC:', '')        
             ga_rat = ga_human
             for hgnc in re.findall(r'\b\S+\b', ga_human):
                 if (hgnc not in ['and', 'or', 'AND', 'OR']):

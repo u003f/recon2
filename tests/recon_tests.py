@@ -112,9 +112,9 @@ def get_list_of_genes(sbml):
     for reaction in model.getListOfReactions():
         rID = reaction.getId()
         gene_association = get_notes_field(rID, 'GENE_ASSOCIATION', sbml)
-        for gene in re.findall(r'\b\S+\b', gene_association):
-            if (gene not in ['and', 'or', 'AND', 'OR']) and (gene not in gene_list):
-                gene_list.append(gene)
+        new_genes = re.findall(r'\b\S+\b', gene_association)
+        gene_list.extend(new_genes)
+    gene_list = list(set(gene_list).difference(['and', 'or', 'AND', 'OR']))
     return sorted(gene_list)
 
 
