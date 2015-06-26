@@ -1,22 +1,18 @@
 recon_2.2
 
-6110	species
-6110	with SBO term	247
-5393	variable
+6109	species
+6109	with SBO term	247
+5392	variable
 717	fixed
 0	non-reactants
 
-7878	reactions
-4223	with SBO term	176
-3655	with SBO term	185
-7137	non-source/sink
+7848	reactions
+4204	with SBO term	176
+3644	with SBO term	185
+7107	non-source/sink
 741	source/sink
 
-1716	genes
-
-reaction	R_SOAT11r	unbalanced	[C15H31R-1]
-M_chsterol_r + M_R1coa_hs_r    --> M_coa_r        + M_xolest2_hs_r + 4 M_h_r
-C27H46O      + C22H35N7O17P3SR --> C21H32N7O16P3S + C43H76O2       + 4 H
+1713	genes
 
 reaction	R_biomass_protein	unknown	[C-44.2149844192H-89.3534263458N-12.6651600571O-22.3053881013P7.85007614468S-0.282706798867]
 0.7161898017 M_ala_L_c + 0.508866855524 M_arg_L_c + 0.395779036827 M_asn_L_c + 0.499447592068 M_asp_L_c + 0.0659645892351 M_cys_L_c + 0.461756373938 M_gln_L_c + 0.546558073654 M_glu_L_c + 0.763300283286 M_gly_c + 0.179050991501 M_his_L_c + 0.405212464589 M_ile_L_c + 0.772719546742 M_leu_L_c + 0.838682719547 M_lys_L_c + 0.216742209632 M_met_L_c + 0.367521246459 M_phe_L_c + 0.584249291785 M_pro_L_c + 0.555991501416 M_ser_L_c + 0.44290368272 M_thr_L_c + 0.0188470254958 M_trp_L_c  + 0.226161473088 M_tyr_L_c + 0.499447592068 M_val_L_c + 29.2504249292 M_atp_c       + 29.2504249292 M_h2o_c --> M_biomass_protein_c + 29.2504249292 M_adp_c       + 29.2504249292 M_pi_c + 29.2504249292 M_h_c
@@ -38,18 +34,18 @@ reaction	R_biomass_lipid	unknown	[C-119.579402061H-236.214329896N-2.58386597938O
 0.210319587629 M_chsterol_c + 0.12018556701 M_clpn_hs_c  + 0.240360824742 M_pail_hs_c + 1.59237113402 M_pchol_hs_c + 0.570865979381 M_pe_hs_c  + 0.0300412371134 M_pglyc_hs_c + 0.180268041237 M_sphmyln_hs_c + 0.0600927835052 M_ps_hs_c   --> M_biomass_lipid_c
 0.210319587629 C27H46O      + 0.12018556701 C73H142O17P2 + 0.240360824742 C41H78O13P  + 1.59237113402 C40H80NO8P   + 0.570865979381 C37H74NO8P + 0.0300412371134 C38H74O10P   + 0.180268041237 C39H80N2O6P    + 0.0600927835052 C38H74NO10P --> ?
 
-7131	reactions balanced
-1	reactions unbalanced
+7101	reactions balanced
+0	reactions unbalanced
 5	reactions unknown
 
 EX_glc(e):	31
 EX_fru(e):	31
 EX_ppa(e):	16.25
 EX_but(e):	21.5
-EX_hx(e):	33.5
+EX_hx(e):	35.25
 EX_octa(e):	49
-EX_HC02175(e):	57.4167
-EX_HC02176(e):	73.8333
+EX_HC02175(e):	62.75
+EX_HC02176(e):	76.5
 EX_ttdca(e):	90.25
 EX_hdca(e):	104
 EX_ocdca(e):	117.75
@@ -230,4 +226,3 @@ quek14
 6061	reactions balanced
 211	reactions unbalanced
 355	reactions unknown
-
