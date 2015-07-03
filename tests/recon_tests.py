@@ -549,7 +549,9 @@ def get_reaction_by_id(sbml, rID):
         # try known alternatives
         rID_map = {
             'R_DM_atp_c': 'R_HKt',  # alternative ATPase
-            'R_EX_HC02175_LPAREN_e_RPAREN': 'R_EX_dca_LPAREN_e_RPAREN_'  # alternative C10:0
+            'R_EX_HC02175_LPAREN_e_RPAREN': 'R_EX_dca_LPAREN_e_RPAREN_',  # alternative C10:0
+            'R_EX_HC02176_LPAREN_e_RPAREN': 'R_EX_ddca_LPAREN_e_RPAREN_',  # alternative C12:0
+            'R_EX_docosac': 'R_EX_docosac_LPAREN_e_RPAREN_',  # alternative C22:0
             }
         if rID in rID_map:
             rID = rID_map[rID]
