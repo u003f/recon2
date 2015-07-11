@@ -1,3 +1,3 @@
-This directory contains the reconstruction of rat metabolism (rambo.xml), derived from recon 2.2 [2.2.03].
+This directory contains the reconstruction of rat metabolism (rambo.xml), derived from recon 2.2 [2.2.05].
 
 The script human_to_rat.py performs the transformation. The mapping ensembl_hgnc_to_rat.txt (as calculated in Ensembl Genes 80, GRCh38.p2) is used to map from the HGNC identifiers in the human reconstruction, to their Ensembl rat orthologues.
